@@ -11,3 +11,4 @@ Patrycja (Scrum Master)
 
 
 - Master Build Status [![Build Status](https://travis-ci.com/KlaudiaJaros/SEM-CW.svg?branch=master)](https://travis-ci.com/KlaudiaJaros/SEM-CW)
+- Release Build Status [![Build Status](https://travis-ci.com/KlaudiaJaros/SEM-CW.svg?branch=release)](https://travis-ci.com/KlaudiaJaros/SEM-CW)
