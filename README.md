@@ -10,3 +10,4 @@ Monika (Product Owner),
 Patrycja (Scrum Master)
 
 
+- Master Build Status [![Build Status](https://travis-ci.com/KlaudiaJaros/SEM-CW.svg?branch=master)](https://travis-ci.com/KlaudiaJaros/SEM-CW)
