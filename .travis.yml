@@ -1,1 +1,16 @@
+# sem-cw - Docker network
+# sem_cw - Docker image
+
+sudo: required
+
 language: java
+
+services:
+  - docker
+
+after_success:
+  - docker network create --driver bridge sem-cw
+  - docker pull mongo
+  - docker run -d --name mongo-dbserver --network sem-cw mongo
+  - docker build -t sem_cw .
+  - docker run --network sem-cw sem_cw
