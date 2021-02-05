@@ -10,10 +10,11 @@ public class App
     public static void main(String[] args)
     {
         System.out.println("Boo yah!");
-        /* testing MongoDB connection
-
+        // /* testing MongoDB connection
+        // Connect to MongoDB
+        MongoClient mongoClient = new MongoClient("mongo-dbserver");
         // Connect to MongoDB on local system - we're using port 27000
-        MongoClient mongoClient = new MongoClient("localhost", 27000);
+        // MongoClient mongoClient = new MongoClient("localhost", 27000);
         // Get a database - will create when we use it
         MongoDatabase database = mongoClient.getDatabase("mydb");
         // Get a collection from the database
@@ -29,6 +30,6 @@ public class App
         // Check document in collection
         Document myDoc = collection.find().first();
         System.out.println(myDoc.toJson());
-       */
+      // */
     }
 }
