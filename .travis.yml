@@ -1,1 +1,10 @@
+sudo: required
+
 language: java
+
+services:
+  - docker
+
+after_success:
+  - docker build -t SEM-CW .
+  - docker run SEM-CW
