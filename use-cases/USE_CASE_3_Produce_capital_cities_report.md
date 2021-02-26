@@ -1,4 +1,4 @@
-## USE CASE 3: Generate reports on country populations
+## USE CASE 3: Generate reports on capital city populations
 
 | USE CASE 3 | CHARACTERISTIC INFORMATION |   
 | --------------- | ------------ | 
