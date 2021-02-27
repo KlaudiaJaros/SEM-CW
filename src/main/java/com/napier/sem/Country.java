@@ -1,6 +1,10 @@
 package com.napier.sem;
 
+/**
+ * Country class to store all information about a country.
+ */
 public class Country {
+
     private String code;
     private String name;
     private String continent;
