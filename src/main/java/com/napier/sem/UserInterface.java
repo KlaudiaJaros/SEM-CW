@@ -2,16 +2,26 @@ package com.napier.sem;
 
 import java.util.Scanner;
 
+/**
+ * A Text User Interface class to allow user to generate various reports
+ */
 public class UserInterface {
 
-    private int userInputN = -1;
-    private String userInputString = "";
-    private int selection = -1;
+    private int userInputN = -1; // user input for 'N country reports'
+    private String userInputString = ""; // user input for any String user needs to specify
+    private int selection = -1; // user input for menu selection
 
+    /**
+     * A method to start the user interface
+     */
     public void start() {
         displayReportTypes();
     }
 
+    /**
+     * Displays all possible report types
+     * and gets user input to show the next menu
+     */
     private void displayReportTypes() {
 
         // Display report types on the console
@@ -50,7 +60,10 @@ public class UserInterface {
             }
         }
     }
-
+    /**
+     * Displays all possible country report types
+     * and gets user input to show the next menu
+     */
     private void displayCountryReportTypes() {
         // Display country report types on the console
         System.out.println("COUNTRY REPORT TYPES\n" +
@@ -110,7 +123,10 @@ public class UserInterface {
             }
         }
     }
-
+    /**
+     * Displays all possible city report types
+     * and gets user input to show the next menu
+     */
     private void displayCityReportTypes() {
         // Display city report types on the console
         System.out.println("CITY REPORT TYPES\n" +
@@ -173,7 +189,11 @@ public class UserInterface {
         }
     }
 
-    private void displayCapitalCityReportTypes() {
+    /**
+     * Displays all possible capital city report types
+     * and gets user input to show the next menu
+     */
+        private void displayCapitalCityReportTypes() {
         // Display capital city report types on the console
         System.out.println("CAPITAL CITY REPORT TYPES\n" +
                 "1. List ALL the capital cities in the WORLD (largest population to smallest)\n" +
@@ -218,7 +238,10 @@ public class UserInterface {
             }
         }
     }
-
+    /**
+     * Displays all possible population report types
+     * and gets user input to show the next menu
+     */
     private void displayPopulationReportTypes() {
         // Display population report types on the console
         System.out.println("POPULATION REPORT TYPES\n" +
@@ -276,7 +299,10 @@ public class UserInterface {
             }
         }
     }
-
+    /**
+     * Displays all possible language report types
+     * and gets user input to show the next menu
+     */
     private void displayLanguageReportTypes() {
         // Display language report types on the console
         System.out.println("LANGUAGE REPORT TYPES\n" +
@@ -302,36 +328,56 @@ public class UserInterface {
             }
         }
     }
-
+    /**
+     * Displays a message to specify a continent
+     */
     private void displaySpecifyContinent() {
         System.out.print("Please specify the continent: ");
     }
-
+    /**
+     * Displays a message to specify a region
+     */
     private void displaySpecifyRegion() {
         System.out.print("Please specify the region: ");
     }
-
+    /**
+     * Displays a message to specify a country
+     */
     private void displaySpecifyCountry() {
         System.out.print("Please specify the country: ");
     }
-
+    /**
+     * Displays a message to specify a district
+     */
     private void displaySpecifyDistrict() {
         System.out.print("Please specify the district: ");
     }
-
+    /**
+     * Displays a message to specify a city
+     */
     private void displaySpecifyCity() {
         System.out.print("Please specify the city: ");
     }
-
+    /**
+     * Displays a message to specify a N
+     */
     private void displaySpecifyN() {
         System.out.print("Please specify N: ");
     }
 
+    /**
+     * Gets a number from the user
+     * @return user's input number
+     */
     private int getUserInputNumber() {
         Scanner sc = new Scanner(System.in);
         return sc.nextInt();
     }
 
+    /**
+     * Gets a string from the user
+     * @return user's input String
+     */
     private String getUserInputString() {
         Scanner sc = new Scanner(System.in);
         return sc.next();
