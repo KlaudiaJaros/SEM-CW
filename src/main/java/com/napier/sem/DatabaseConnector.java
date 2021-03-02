@@ -20,12 +20,21 @@ public class DatabaseConnector {
     public static HashMap<Integer, City> cities;
     public static HashMap<String, Language> languages;
 
+    /**
+     * Private constructor only reachable from within this class.
+     */
     private DatabaseConnector(){ }
 
+    /**
+     * Public method that returns an instance of the DatabaseConnector class.
+     * @return DatabaseConnector instance
+     */
     public static DatabaseConnector getDatabaseConnector(){
+        // if the class hasn't been instantiated before:
         if (databaseConnector==null){
             databaseConnector=new DatabaseConnector();
         }
+        // otherwise, return the existing instance:
         return databaseConnector;
     }
 
@@ -89,7 +98,7 @@ public class DatabaseConnector {
     }
 
     /**
-     *  Loads all data from the database and stores it in the static ArrayLists.
+     *  Loads all data from the database and stores it in the static HashMaps.
      */
     public void loadData(){
         countries=new HashMap<>();

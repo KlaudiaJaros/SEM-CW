@@ -2,8 +2,15 @@ package com.napier.sem;
 
 import java.util.ArrayList;
 
+/**
+ * A class with the main method for our population system app.
+ */
 public class App
 {
+    /**
+     * Main method
+     * @param args args
+     */
     public static void main(String[] args)
     {
         // Get the database connector:
