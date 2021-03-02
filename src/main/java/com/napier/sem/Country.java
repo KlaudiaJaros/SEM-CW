@@ -1,7 +1,11 @@
 package com.napier.sem;
 
+/**
+ * Country class to store all information about a country.
+ */
 public class Country {
-    private int code;
+
+    private String code;
     private String name;
     private String continent;
     private String region;
@@ -9,11 +13,11 @@ public class Country {
     private int population;
     private String capital;
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

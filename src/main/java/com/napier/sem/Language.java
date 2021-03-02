@@ -1,6 +1,10 @@
 package com.napier.sem;
 
+/**
+ * Language class to store all information about a language.
+ */
 public class Language {
+
     private String name;
     private String countryCode;
     private boolean isOfficial;

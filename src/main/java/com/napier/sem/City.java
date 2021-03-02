@@ -1,5 +1,8 @@
 package com.napier.sem;
 
+/**
+ * City class to store all information about a city.
+ */
 public class City {
     private int id;
     private String name;
