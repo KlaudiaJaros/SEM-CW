@@ -181,7 +181,7 @@ public class DatabaseConnector {
                 country.setRegion(result.getString("Region"));
                 country.setSurfaceArea(result.getInt("SurfaceArea"));
                 country.setPopulation(result.getInt("Population"));
-                country.setCapital(result.getString("Capital"));
+                country.setCapitalCityID(result.getInt("Capital"));
                 countries.put(country.getCode(), country);
             }
             return countries;
