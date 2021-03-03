@@ -16,6 +16,9 @@ public class App
         // Get the database connector:
         DatabaseConnector db = DatabaseConnector.getDatabaseConnector();
 
+        // initialise reports class:
+        Reports reports = new Reports();
+
         // connect and load data:
         db.connect();
         db.loadData();
@@ -36,11 +39,29 @@ public class App
             }
         }
 
+
         // Test countries by populations desc:
-        ArrayList<Country> result = db.getAllCountriesByPopulation();
+        System.out.println("All countries:");
+        ArrayList<Country> result = reports.getCountriesByPopulation(null, null);
         for (Country c : result){
             System.out.println(c.toString());
         }
+
+        // test countries by population in a specified continent:
+        System.out.println("By continent:");
+        ArrayList<Country> byContinent = reports.getCountriesByPopulation("Africa", null);
+        for (Country c : byContinent){
+            System.out.println(c.toString());
+        }
+
+
+        // test countries by population in a specified region:
+        System.out.println("By region:");
+        ArrayList<Country> byRegion = reports.getCountriesByPopulation(null, "Eastern Europe");
+        for (Country c : byRegion){
+            System.out.println(c.toString());
+        }
+
 
         // disconnect:
         db.disconnect();
