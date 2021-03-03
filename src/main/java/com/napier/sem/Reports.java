@@ -15,7 +15,7 @@ public class Reports {
      * The countries are then picked from the previously loaded HashMap by their id into an ArrayList and returned.
      * @return an ArrayList of sorted countries
      */
-    public ArrayList<Country> getCountriesByPopulation(String continent, String region) {
+    public ArrayList<Country> getCountriesByPopulation(String continent, String region, int n) {
         try {
             // to store and return results:
             ArrayList<Country> results = new ArrayList<>();
@@ -25,6 +25,9 @@ public class Reports {
 
             // to store the where clause if continent or region string not null:
             String whereClause= "";
+
+            //to store the limit clause if n is provided:
+            String limitClause = "";
 
             // world population report if both parameters are null:
             if (continent==null && region==null){
@@ -39,9 +42,14 @@ public class Reports {
                 whereClause="WHERE region='" + region + "' ";
             }
 
+            if (n!=0){
+                limitClause = "LIMIT " + n;
+            }
+
             String query = "SELECT Code FROM country " +
                     whereClause +
-                    "ORDER BY Population DESC";
+                    "ORDER BY Population DESC "
+                    + limitClause;
 
             // execute SQL statement:
             ResultSet result = statement.executeQuery(query);

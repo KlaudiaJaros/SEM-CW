@@ -42,14 +42,14 @@ public class App
 
         // Test countries by populations desc:
         System.out.println("All countries:");
-        ArrayList<Country> result = reports.getCountriesByPopulation(null, null);
+        ArrayList<Country> result = reports.getCountriesByPopulation(null, null, 0);
         for (Country c : result){
             System.out.println(c.toString());
         }
 
         // test countries by population in a specified continent:
         System.out.println("By continent:");
-        ArrayList<Country> byContinent = reports.getCountriesByPopulation("Africa", null);
+        ArrayList<Country> byContinent = reports.getCountriesByPopulation("Africa", null, 0);
         for (Country c : byContinent){
             System.out.println(c.toString());
         }
@@ -57,8 +57,15 @@ public class App
 
         // test countries by population in a specified region:
         System.out.println("By region:");
-        ArrayList<Country> byRegion = reports.getCountriesByPopulation(null, "Eastern Europe");
+        ArrayList<Country> byRegion = reports.getCountriesByPopulation(null, "Eastern Europe", 0);
         for (Country c : byRegion){
+            System.out.println(c.toString());
+        }
+
+        // test top 5 countries
+        System.out.println("By number:");
+        ArrayList<Country> byNumber = reports.getCountriesByPopulation(null, null, 5);
+        for (Country c : byNumber){
             System.out.println(c.toString());
         }
 
