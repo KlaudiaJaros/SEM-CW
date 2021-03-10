@@ -88,21 +88,25 @@ public class UserInterface {
                     break;
                 case 1:
                     // List ALL the countries in the WORLD (largest population to smallest)
+                    //reports.getCountriesByPopulation(null, null, 0);
                     break;
                 case 2:
                     // List ALL the countries in a specified CONTINENT (largest population to smallest)
                     displaySpecifyContinent();
                     userInputString = getUserInputString(); // continent
+                    //reports.getCountriesByPopulation(userInputString, null, 0);
                     break;
                 case 3:
                     // List ALL the countries in a specified REGION (largest population to smallest)
                     displaySpecifyRegion();
                     userInputString = getUserInputString(); // region
+                    //reports.getCountriesByPopulation(null, userInputString, 0);
                     break;
                 case 4:
                     //  List the TOP N populated countries in the WORLD
                     displaySpecifyN();
                     userInputN = getUserInputNumber(); // N
+                    //reports.getCountriesByPopulation(null, null, userInputN);
                     break;
                 case 5:
                     // List the TOP N populated countries in a specified REGION
@@ -110,6 +114,7 @@ public class UserInterface {
                     userInputN = getUserInputNumber(); // N
                     displaySpecifyRegion();
                     userInputString = getUserInputString(); // region
+                    //reports.getCountriesByPopulation(null, userInputString, userInputN);
                     break;
                 case 6:
                     // List the TOP N populated countries in a specified CONTINENT
@@ -117,6 +122,7 @@ public class UserInterface {
                     userInputN = getUserInputNumber(); // N
                     displaySpecifyContinent();
                     userInputString = getUserInputString(); // continent
+                    //reports.getCountriesByPopulation(userInputString, null, userInputN);
                     break;
                 default:
                     System.out.println("Invalid input, please enter a value 0-6" );
@@ -158,30 +164,65 @@ public class UserInterface {
                     break;
                 case 2:
                     // List ALL the cities in a specified CONTINENT (largest population to smallest)
+                    displaySpecifyContinent();
+                    userInputString = getUserInputString(); // continent
+                    //reports.getCitiesByPopulation(userInputString, null, null, null, 0);
                     break;
                 case 3:
                     // List ALL the cities in a specified REGION (largest population to smallest)
+                    displaySpecifyRegion();
+                    userInputString = getUserInputString(); // region
+                    //reports.getCitiesByPopulation(null, userInputString, null, null, 0);
                     break;
                 case 4:
                     //  List ALL the cities in a specified COUNTRY (largest population to smallest)
+                    displaySpecifyCountry();
+                    userInputString = getUserInputString(); // country
+                    //reports.getCitiesByPopulation(null, null, null, userInputString, 0);
                     break;
                 case 5:
                     // List ALL the cities in a specified DISTRICT (largest population to smallest)
+                    displaySpecifyDistrict();
+                    userInputString = getUserInputString(); // district
+                    //reports.getCitiesByPopulation(null, null, userInputString, null, 0);
                     break;
                 case 6:
                     // List the TOP N populated cities in the WORLD
+                    displaySpecifyN();
+                    userInputN = getUserInputNumber(); // N
+                    //reports.getCitiesByPopulation(null, null, null, null, userInputN);
                     break;
                 case 7:
                     // List the TOP N populated cities in a specified REGION
+                    displaySpecifyN();
+                    userInputN = getUserInputNumber(); // N
+                    displaySpecifyRegion();
+                    userInputString = getUserInputString(); // region
+                    //reports.getCitiesByPopulation(null, userInputString, null, null, userInputN);
                     break;
                 case 8:
                     // List the TOP N populated cities in a specified CONTINENT
+                    displaySpecifyN();
+                    userInputN = getUserInputNumber(); // N
+                    displaySpecifyContinent();
+                    userInputString = getUserInputString(); // continent
+                    //reports.getCitiesByPopulation(userInputString, null, null, null, userInputN);
                     break;
                 case 9:
                     // List the TOP N populated cities in a specified COUNTRY
+                    displaySpecifyN();
+                    userInputN = getUserInputNumber(); // N
+                    displaySpecifyCountry();
+                    userInputString = getUserInputString(); // country
+                    //reports.getCitiesByPopulation(null, null, null, userInputString, userInputN);
                     break;
                 case 10:
                     // List the TOP N populated cities in a specified DISTRICT
+                    displaySpecifyN();
+                    userInputN = getUserInputNumber(); // N
+                    displaySpecifyCountry();
+                    userInputString = getUserInputString(); // district
+                    //reports.getCitiesByPopulation(null, null, userInputString, null, userInputN);
                     break;
                 default:
                     System.out.println("Invalid input, please enter a value 0-10" );
