@@ -10,6 +10,8 @@ public class UserInterface {
     private int userInputN = -1; // user input for 'N country reports'
     private String userInputString = ""; // user input for any String user needs to specify
     private int selection = -1; // user input for menu selection
+    private Reports reports = new Reports();
+
 
     /**
      * A method to start the user interface
@@ -38,7 +40,10 @@ public class UserInterface {
         // Wait for correct input
         while (selection < 1 || selection > 5) {
             // get user input (int only)
+            System.out.println("Select a menu item");
             selection = getUserInputNumber();
+
+            System.out.println("Selection is :" + selection);
             switch (selection) {
                 case 1:
                     displayCountryReportTypes();
@@ -88,25 +93,25 @@ public class UserInterface {
                     break;
                 case 1:
                     // List ALL the countries in the WORLD (largest population to smallest)
-                    //reports.getCountriesByPopulation(null, null, 0);
+                    reports.getCountriesByPopulation(null, null, 0);
                     break;
                 case 2:
                     // List ALL the countries in a specified CONTINENT (largest population to smallest)
                     displaySpecifyContinent();
                     userInputString = getUserInputString(); // continent
-                    //reports.getCountriesByPopulation(userInputString, null, 0);
+                    reports.getCountriesByPopulation(userInputString, null, 0);
                     break;
                 case 3:
                     // List ALL the countries in a specified REGION (largest population to smallest)
                     displaySpecifyRegion();
-                    userInputString = getUserInputString(); // region
-                    //reports.getCountriesByPopulation(null, userInputString, 0);
+                   userInputString = getUserInputString(); // region
+                    reports.getCountriesByPopulation(null, userInputString, 0);
                     break;
                 case 4:
                     //  List the TOP N populated countries in the WORLD
                     displaySpecifyN();
                     userInputN = getUserInputNumber(); // N
-                    //reports.getCountriesByPopulation(null, null, userInputN);
+                    reports.getCountriesByPopulation(null, null, userInputN);
                     break;
                 case 5:
                     // List the TOP N populated countries in a specified REGION
@@ -114,7 +119,7 @@ public class UserInterface {
                     userInputN = getUserInputNumber(); // N
                     displaySpecifyRegion();
                     userInputString = getUserInputString(); // region
-                    //reports.getCountriesByPopulation(null, userInputString, userInputN);
+                    reports.getCountriesByPopulation(null, userInputString, userInputN);
                     break;
                 case 6:
                     // List the TOP N populated countries in a specified CONTINENT
@@ -122,7 +127,7 @@ public class UserInterface {
                     userInputN = getUserInputNumber(); // N
                     displaySpecifyContinent();
                     userInputString = getUserInputString(); // continent
-                    //reports.getCountriesByPopulation(userInputString, null, userInputN);
+                    reports.getCountriesByPopulation(userInputString, null, userInputN);
                     break;
                 default:
                     System.out.println("Invalid input, please enter a value 0-6" );
@@ -154,7 +159,7 @@ public class UserInterface {
         // Wait for correct input
         while (selection < 0 || selection > 10) {
             // get user input (int only)
-            selection = getUserInputNumber();
+          //  selection = getUserInputNumber();
             switch (selection) {
                 case 0: // go back to report types
                     displayReportTypes();
@@ -220,7 +225,7 @@ public class UserInterface {
                     // List the TOP N populated cities in a specified DISTRICT
                     displaySpecifyN();
                     userInputN = getUserInputNumber(); // N
-                    displaySpecifyCountry();
+                    displaySpecifyDistrict();
                     userInputString = getUserInputString(); // district
                     //reports.getCitiesByPopulation(null, null, userInputString, null, userInputN);
                     break;
@@ -251,7 +256,7 @@ public class UserInterface {
         // Wait for correct input
         while (selection < 0 || selection > 6) {
             // get user input (int only)
-            selection = getUserInputNumber();
+            //selection = getUserInputNumber();
             switch (selection) {
                 case 0: // go back to report types
                     displayReportTypes();
@@ -303,7 +308,7 @@ public class UserInterface {
         // Wait for correct input
         while (selection < 0 || selection > 9) {
             // get user input (int only)
-            selection = getUserInputNumber();
+           // selection = getUserInputNumber();
             switch (selection) {
                 case 0: // go back to report types
                     displayReportTypes();
@@ -356,7 +361,7 @@ public class UserInterface {
         // Wait for correct input
         while (selection < 0 || selection > 1) {
             // get user input (int only)
-            selection = getUserInputNumber();
+            //selection = getUserInputNumber();
             switch (selection) {
                 case 0: // go back to report types
                     displayReportTypes();
