@@ -13,8 +13,12 @@ public class Reports {
     /***
      * Gets all countries sorted by population descending. Runs an SQL query and returns ids.
      * The countries are then picked from the previously loaded HashMap by their id into an ArrayList and returned.
+     * @param continent continent filter
+     * @param region region filter
+     * @param n top N countries filter
      * @return an ArrayList of sorted countries
      */
+
     public ArrayList<Country> getCountriesByPopulation(String continent, String region, int n) {
         try {
             // to store and return results:
@@ -66,4 +70,82 @@ public class Reports {
             return null;
         }
     }
+
+    /**
+     * Gets all cities sorted by population descending. Runs an SQL query and returns ids.
+     * The countries are then picked from the previously loaded HashMap by their id into an ArrayList and returned.
+     * @param continent continent filter
+     * @param region region filter
+     * @param district district filter
+     * @param country country filter
+     * @param n top N cities filter
+     * @return an array list of sorted cities
+     */
+    public ArrayList<City> getCitiesByPopulation(String continent, String region, String district, String country, int n) {
+        try {
+            ArrayList<City> results = new ArrayList<>();
+
+            //create a statement and a SQL query string:
+            Statement statement = DatabaseConnector.getConnection().createStatement();
+
+            // to store where clause to filter results if required
+            String whereClause = "";
+
+            // to store limit clause if N is provided by user
+            String limitClause = "";
+
+            // if getting ALL cities
+            if (continent == null && region == null && district == null && country == null) {
+                whereClause = "";
+            }
+
+            // if getting cities in CONTINENT only
+            else if (continent != null && region == null && district == null && country == null) {
+                whereClause = "JOIN country ON (country.Code = city.CountryCode) WHERE country.Continent = '" + continent + "' ";
+            }
+
+            //if getting cities in REGION only
+            else if (continent == null && region != null && district == null && country == null) {
+                whereClause = "JOIN country ON (country.Code=city.CountryCode) WHERE country.Region = '" + region + "' ";
+            }
+
+            //if getting cities in DISTRICT only
+            else if (continent == null && region == null && district != null && country == null) {
+                whereClause = "WHERE district = '" + district + "' ";
+            }
+
+            //if getting cities in COUNTRY only
+            else if (continent == null && region == null && district == null && country != null) {
+                whereClause = "JOIN country ON country.Code = city.CountryCode WHERE country.Name = '" + country + "' ";
+            }
+
+            // show results for top N cities only
+            if (n!=0){
+                limitClause = "LIMIT " + n;
+            }
+
+
+            String query = "SELECT id FROM city " +
+                    whereClause + "ORDER BY city.Population DESC " +
+                    limitClause;
+
+            // execute the SQL statement to get results
+            ResultSet result = statement.executeQuery(query);
+
+            // while result has another line
+            while (result.next()) {
+                int id = result.getInt("id");
+                results.add(DatabaseConnector.cities.get(id));
+            }
+
+            return results;
+
+        }
+        catch (Exception e) {
+                System.out.println(e.getMessage());
+                System.out.println("Failed to load cities.");
+                return null;
+        }
+    }
+
 }

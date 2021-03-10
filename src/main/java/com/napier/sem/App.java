@@ -42,8 +42,8 @@ public class App
 
         // Test countries by populations desc:
         System.out.println("All countries:");
-        ArrayList<Country> result = reports.getCountriesByPopulation(null, null, 0);
-        for (Country c : result){
+        ArrayList<Country> countryResult = reports.getCountriesByPopulation(null, null, 0);
+        for (Country c : countryResult){
             System.out.println(c.toCountryReportFormat());
         }
 
@@ -69,6 +69,43 @@ public class App
             System.out.println(c.toCountryReportFormat());
         }
 
+
+        // testing getting cities populations report
+        System.out.println("All cities: ");
+        ArrayList<City> cityResult = reports.getCitiesByPopulation(null, null, null, null,5);
+        for (City c : cityResult) {
+            System.out.println(c.toCityReportFormat());
+        }
+
+
+        // testing getting cities in a continent
+        System.out.println("By continent: ");
+        ArrayList<City> cityByContinent = reports.getCitiesByPopulation("Asia", null, null, null,0);
+        for (City c : cityByContinent) {
+            System.out.println(c.toCityReportFormat());
+        }
+
+        //testing getting cities in a region
+        System.out.println("By region: ");
+        ArrayList<City> cityByRegion = reports.getCitiesByPopulation(null, "Eastern Europe", null, null,0);
+        for (City c : cityByRegion) {
+            System.out.println(c.toCityReportFormat());
+        }
+
+
+        // testing getting cities in a country
+        System.out.println("By country: ");
+        ArrayList<City> cityByCountry = reports.getCitiesByPopulation(null,null,null,"Austria",0);
+        for (City c : cityByCountry) {
+            System.out.println(c.toCityReportFormat());
+        }
+
+        // testing getting cities in a district
+        System.out.println("By district: ");
+        ArrayList<City> cityByDistrict = reports.getCitiesByPopulation(null,null,"Dubai",null,0);
+        for (City c : cityByDistrict) {
+            System.out.println(c.toCityReportFormat());
+        }
 
         // disconnect:
         db.disconnect();
