@@ -16,6 +16,9 @@ public class App
         // Get the database connector:
         DatabaseConnector db = DatabaseConnector.getDatabaseConnector();
 
+        // initialise reports class:
+        Reports reports = new Reports();
+
         // connect and load data:
         db.connect();
         db.loadData();
@@ -36,10 +39,72 @@ public class App
             }
         }
 
+
         // Test countries by populations desc:
-        ArrayList<Country> result = db.getAllCountriesByPopulation();
-        for (Country c : result){
-            System.out.println(c.toString());
+        System.out.println("All countries:");
+        ArrayList<Country> countryResult = reports.getCountriesByPopulation(null, null, 0);
+        for (Country c : countryResult){
+            System.out.println(c.toCountryReportFormat());
+        }
+
+        // test countries by population in a specified continent:
+        System.out.println("By continent:");
+        ArrayList<Country> byContinent = reports.getCountriesByPopulation("Africa", null, 0);
+        for (Country c : byContinent){
+            System.out.println(c.toCountryReportFormat());
+        }
+
+
+        // test countries by population in a specified region:
+        System.out.println("By region:");
+        ArrayList<Country> byRegion = reports.getCountriesByPopulation(null, "Eastern Europe", 0);
+        for (Country c : byRegion){
+            System.out.println(c.toCountryReportFormat());
+        }
+
+        // test top 5 countries
+        System.out.println("By number:");
+        ArrayList<Country> byNumber = reports.getCountriesByPopulation(null, null, 5);
+        for (Country c : byNumber){
+            System.out.println(c.toCountryReportFormat());
+        }
+
+
+        // testing getting cities populations report
+        System.out.println("All cities: ");
+        ArrayList<City> cityResult = reports.getCitiesByPopulation(null, null, null, null,5);
+        for (City c : cityResult) {
+            System.out.println(c.toCityReportFormat());
+        }
+
+
+        // testing getting cities in a continent
+        System.out.println("By continent: ");
+        ArrayList<City> cityByContinent = reports.getCitiesByPopulation("Asia", null, null, null,0);
+        for (City c : cityByContinent) {
+            System.out.println(c.toCityReportFormat());
+        }
+
+        //testing getting cities in a region
+        System.out.println("By region: ");
+        ArrayList<City> cityByRegion = reports.getCitiesByPopulation(null, "Eastern Europe", null, null,0);
+        for (City c : cityByRegion) {
+            System.out.println(c.toCityReportFormat());
+        }
+
+
+        // testing getting cities in a country
+        System.out.println("By country: ");
+        ArrayList<City> cityByCountry = reports.getCitiesByPopulation(null,null,null,"Austria",0);
+        for (City c : cityByCountry) {
+            System.out.println(c.toCityReportFormat());
+        }
+
+        // testing getting cities in a district
+        System.out.println("By district: ");
+        ArrayList<City> cityByDistrict = reports.getCitiesByPopulation(null,null,"Dubai",null,0);
+        for (City c : cityByDistrict) {
+            System.out.println(c.toCityReportFormat());
         }
 
         // disconnect:

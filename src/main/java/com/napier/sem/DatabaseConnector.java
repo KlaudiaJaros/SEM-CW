@@ -39,6 +39,14 @@ public class DatabaseConnector {
     }
 
     /**
+     * Gets the SQL connection
+     * @return connection
+     */
+    public static Connection getConnection() {
+        return connection;
+    }
+
+    /**
      * Connect to the MySQL database.
      */
     public void connect()
@@ -173,7 +181,7 @@ public class DatabaseConnector {
                 country.setRegion(result.getString("Region"));
                 country.setSurfaceArea(result.getInt("SurfaceArea"));
                 country.setPopulation(result.getInt("Population"));
-                country.setCapital(result.getString("Capital"));
+                country.setCapitalCityID(result.getInt("Capital"));
                 countries.put(country.getCode(), country);
             }
             return countries;
@@ -238,34 +246,5 @@ public class DatabaseConnector {
         System.out.println(city.toString());
     }
 
-    /***
-     * Gets all countries sorted by population descending. Runs an SQL query and returns ids.
-     * The countries are then picked from the previously loaded HashMap by their id into an ArrayList and returned.
-     * @return an ArrayList of sorted countries
-     */
-    public ArrayList<Country> getAllCountriesByPopulation() {
-        try {
-            // to store and return results:
-            ArrayList<Country> results = new ArrayList<>();
 
-            // create a statement and a SQL query string:
-            Statement statement = connection.createStatement();
-            String query = "SELECT Code, Name, Continent, Region, Population, Capital FROM country " +
-                    "ORDER BY Population DESC";
-
-            // execute SQL statement:
-            ResultSet result = statement.executeQuery(query);
-
-            // while the result has another line:
-            while (result.next()) {
-                String code = result.getString("Code");
-                results.add(countries.get(code)); // get the country by its id and add to the list
-            }
-            return results; // added in order according to the query results
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to load countries.");
-            return null;
-        }
-    }
 }
