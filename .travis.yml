@@ -1,11 +1,32 @@
-sudo: required
-
 language: java
+
+sudo: false
+
+addons:
+  hosts:
+    - db
 
 services:
   - docker
 
-after_success:
-  - docker-compose up --abort-on-container-exit #stop all services once one container has finished.
+install:
+  - docker build -t database db/.
+  - docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
-# This will gracefully exit the MySQL container when the main application exits in Travis CI
+before_script:
+  - mvn clean
+
+jobs:
+  include:
+    - stage: unit tests
+      install: skip
+      jdk: oraclejdk11
+      script: mvn test -Dtest=com.napier.sem.AppTest
+    - stage: integration tests
+      jdk: oraclejdk11
+      script: echo "Integration Tests"
+    - stage: deploy
+      install: skip
+      jdk: oraclejdk11
+      script: echo "Deploy"
