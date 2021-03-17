@@ -104,4 +104,13 @@ public class City {
                 ", population=" + population +
                 '}';
     }
+
+    /**
+     * formats a string report to print a table row
+     * @return formatted city string
+     */
+    public String toCityReportFormat(){
+        String formattedCityString = String.format("%-40s %-5s %-25s %-15s", name, countryCode, district, population);
+        return formattedCityString;
+    }
 }

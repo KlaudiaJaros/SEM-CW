@@ -1,5 +1,7 @@
 package com.napier.sem;
 
+import com.mysql.jdbc.CacheAdapter;
+
 /**
  * Country class to store all information about a country.
  */
@@ -11,7 +13,7 @@ public class Country {
     private String region;
     private double surfaceArea;
     private int population;
-    private String capital;
+    private int capitalCityID;
 
     /**
      * Gets a country code.
@@ -113,20 +115,28 @@ public class Country {
      * Gets the capital of a country
      * @return country capital
      */
-    public String getCapital() {
-        return capital;
+    public int getCapitalCityID() {
+        return capitalCityID;
     }
 
     /**
      * Sets the capital of the country
-     * @param capital string to be set as the capital of a country
+     * @param capitalCityID string to be set as the capital of a country
      */
-    public void setCapital(String capital) {
-        this.capital = capital;
+    public void setCapitalCityID(int capitalCityID) {
+        this.capitalCityID = capitalCityID;
     }
 
     /**
      * Returns a description of the country object with all its variables
+     * A country report requires the following columns:
+     *
+     * Code.
+     * Name.
+     * Continent.
+     * Region.
+     * Population.
+     * Capital.
      * @return a String description of the Country object
      */
     @Override
@@ -138,7 +148,26 @@ public class Country {
                 ", region='" + region + '\'' +
                 ", surfaceArea=" + surfaceArea +
                 ", population=" + population +
-                ", capital='" + capital + '\'' +
+                ", capitalCityID='" + capitalCityID + '\'' +
                 '}';
+    }
+
+    /**
+     * Formats a String with country data to print as a row in a table
+     * @return formatted country String
+     */
+    public String toCountryReportFormat() {
+        String capitalName;
+        try {
+            capitalName = DatabaseConnector.cities.get(capitalCityID).getName();
+        }
+        catch (Exception capitalCityNullException)
+        {
+            capitalName = "N/A";
+        }
+        String formattedCountryString = String.format("%-5s %-50s %-30s %-30s %-15s %-30s",
+                code, name, continent, region, population, capitalName);
+
+        return formattedCountryString;
     }
 }
