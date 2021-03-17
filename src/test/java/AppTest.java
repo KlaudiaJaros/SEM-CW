@@ -7,4 +7,10 @@ public class AppTest {
     {
         assertEquals(5, 5);
     }
+
+    @Test
+    void secondUnitTest()
+    {
+        assertEquals(1, 1);
+    }
 }
