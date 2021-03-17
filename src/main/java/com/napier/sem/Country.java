@@ -1,7 +1,5 @@
 package com.napier.sem;
 
-import com.mysql.jdbc.CacheAdapter;
-
 /**
  * Country class to store all information about a country.
  */

@@ -20,7 +20,8 @@ public class App
         Reports reports = new Reports();
 
         // connect and load data:
-        db.connect();
+        //localhost:33060
+        db.connect("db:3306");
         db.loadData();
 
         // Verify contents: check sizes - should be: 239, 4079, 984:
