@@ -14,7 +14,7 @@ public class DatabaseIntegrationTest {
     static void init()
     {
         databaseConnector = DatabaseConnector.getDatabaseConnector();
-        databaseConnector.connect("db:3306");
+        databaseConnector.connect("localhost:33060");
         databaseConnector.loadData();
     }
 
