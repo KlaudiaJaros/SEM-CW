@@ -4,6 +4,7 @@ import com.napier.sem.DatabaseConnector;
 import org.junit.jupiter.api.*;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -55,5 +56,11 @@ public class DatabaseIntegrationTest {
     void connectTest()
     {
         assertNotNull(DatabaseConnector.getConnection());
+    }
+
+    @AfterAll
+    static void disconnectFromDatabase()
+    {
+        databaseConnector.disconnect();
     }
 }

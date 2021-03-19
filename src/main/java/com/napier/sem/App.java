@@ -29,9 +29,6 @@ public class App
         System.out.println(DatabaseConnector.cities.size());
         System.out.println(DatabaseConnector.languages.size());
 
-        // Test city (should be Amsterdam):
-        db.getCity(5);
-
         // Test district (Scotland):
         for (City c : DatabaseConnector.cities.values()){
             if (c.getDistrict().equals("Scotland"))

@@ -235,16 +235,4 @@ public class DatabaseConnector {
             return null;
         }
     }
-
-    /**
-     * Gets and prints a city by its ID
-     * @param ID id of the city to print
-     */
-    public void getCity(int ID)
-    {
-        City city = cities.get(ID);
-        System.out.println(city.toString());
-    }
-
-
 }
