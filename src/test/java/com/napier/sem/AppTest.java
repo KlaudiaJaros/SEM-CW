@@ -1,18 +1,38 @@
 package com.napier.sem;
 
 import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
+
 
 public class AppTest {
-    @Test
-    void unitTest()
+    static App app;
+
+    @BeforeAll
+    static void init()
     {
-        assertEquals(5, 5);
+        app = new App();
     }
 
     @Test
-    void secondUnitTest()
+    void printEntriesTestNull()
     {
-        assertEquals(1, 1);
+        app.printEntries(null);
     }
+
+    @Test
+    void printEntriesTestEmpty()
+    {
+        ArrayList<Entry> list = new ArrayList<>();
+        app.printEntries(list);
+    }
+
+    @Test
+    void printEntriesTestContainsNull()
+    {
+        ArrayList<Entry> list = new ArrayList<>();
+        list.add(null);
+        app.printEntries(list);
+    }
+
+
 }
