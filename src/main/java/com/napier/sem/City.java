@@ -3,7 +3,7 @@ package com.napier.sem;
 /**
  * City class to store all information about a city.
  */
-public class City {
+public class City implements Entry {
     private int id;
     private String name;
     private String countryCode;
@@ -109,7 +109,7 @@ public class City {
      * formats a string report to print a table row
      * @return formatted city string
      */
-    public String toCityReportFormat(){
+    public String toReportFormat(){
         String formattedCityString = String.format("%-40s %-5s %-25s %-15s", name, countryCode, district, population);
         return formattedCityString;
     }

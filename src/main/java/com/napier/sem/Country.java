@@ -1,9 +1,10 @@
 package com.napier.sem;
 
+
 /**
  * Country class to store all information about a country.
  */
-public class Country {
+public class Country implements Entry{
 
     private String code;
     private String name;
@@ -154,7 +155,7 @@ public class Country {
      * Formats a String with country data to print as a row in a table
      * @return formatted country String
      */
-    public String toCountryReportFormat() {
+    public String toReportFormat() {
         String capitalName;
         try {
             capitalName = DatabaseConnector.cities.get(capitalCityID).getName();
