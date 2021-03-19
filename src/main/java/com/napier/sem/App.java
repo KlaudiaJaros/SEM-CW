@@ -42,73 +42,80 @@ public class App
 
         // Test countries by populations desc:
         System.out.println("All countries:");
-        ArrayList<Country> countryResult = reports.getCountriesByPopulation(null, null, 0);
-        for (Country c : countryResult){
-            System.out.println(c.toCountryReportFormat());
-        }
+        ArrayList<Entry> countryResult = reports.getCountriesByPopulation(null, null, 0);
+        printEntries(countryResult);
 
         // test countries by population in a specified continent:
         System.out.println("By continent:");
-        ArrayList<Country> byContinent = reports.getCountriesByPopulation("Africa", null, 0);
-        for (Country c : byContinent){
-            System.out.println(c.toCountryReportFormat());
-        }
-
+        ArrayList<Entry> byContinent = reports.getCountriesByPopulation("Africa", null, 0);
+        printEntries(byContinent);
 
         // test countries by population in a specified region:
         System.out.println("By region:");
-        ArrayList<Country> byRegion = reports.getCountriesByPopulation(null, "Eastern Europe", 0);
-        for (Country c : byRegion){
-            System.out.println(c.toCountryReportFormat());
-        }
+        ArrayList<Entry> byRegion = reports.getCountriesByPopulation(null, "Eastern Europe", 0);
+        printEntries(byRegion);
 
         // test top 5 countries
         System.out.println("By number:");
-        ArrayList<Country> byNumber = reports.getCountriesByPopulation(null, null, 5);
-        for (Country c : byNumber){
-            System.out.println(c.toCountryReportFormat());
-        }
+        ArrayList<Entry> byNumber = reports.getCountriesByPopulation(null, null, 5);
+        printEntries(byNumber);
 
 
         // testing getting cities populations report
         System.out.println("All cities: ");
-        ArrayList<City> cityResult = reports.getCitiesByPopulation(null, null, null, null,5);
-        for (City c : cityResult) {
-            System.out.println(c.toCityReportFormat());
-        }
+        ArrayList<Entry> cityResult = reports.getCitiesByPopulation(null, null, null, null,5);
+        printEntries(cityResult);
 
 
         // testing getting cities in a continent
         System.out.println("By continent: ");
-        ArrayList<City> cityByContinent = reports.getCitiesByPopulation("Asia", null, null, null,0);
-        for (City c : cityByContinent) {
-            System.out.println(c.toCityReportFormat());
-        }
+        ArrayList<Entry> cityByContinent = reports.getCitiesByPopulation("Asia", null, null, null,0);
+        printEntries(cityByContinent);
 
         //testing getting cities in a region
         System.out.println("By region: ");
-        ArrayList<City> cityByRegion = reports.getCitiesByPopulation(null, "Eastern Europe", null, null,0);
-        for (City c : cityByRegion) {
-            System.out.println(c.toCityReportFormat());
-        }
+        ArrayList<Entry> cityByRegion = reports.getCitiesByPopulation(null, "Eastern Europe", null, null,0);
+        printEntries(cityByRegion);
 
 
         // testing getting cities in a country
         System.out.println("By country: ");
-        ArrayList<City> cityByCountry = reports.getCitiesByPopulation(null,null,null,"Austria",0);
-        for (City c : cityByCountry) {
-            System.out.println(c.toCityReportFormat());
-        }
+        ArrayList<Entry> cityByCountry = reports.getCitiesByPopulation(null,null,null,"Austria",0);
+        printEntries(cityByCountry);
 
         // testing getting cities in a district
         System.out.println("By district: ");
-        ArrayList<City> cityByDistrict = reports.getCitiesByPopulation(null,null,"Dubai",null,0);
-        for (City c : cityByDistrict) {
-            System.out.println(c.toCityReportFormat());
-        }
+        ArrayList<Entry> cityByDistrict = reports.getCitiesByPopulation(null,null,"Dubai",null,0);
+        printEntries(cityByDistrict);
 
         // disconnect:
         db.disconnect();
+    }
+
+    /**
+     * Takes in an ArrayList of an abstract type Entry and prints the header and format the entry according to the object type - City, Country or Language.
+     * @param listOfEntries list of entries
+     */
+    public static void printEntries(ArrayList<Entry>listOfEntries){
+        // Check if not null:
+        if (listOfEntries == null || listOfEntries.size()==0)
+        {
+            System.out.println("No results to print.");
+            return;
+        }
+        // Print header:
+        if(listOfEntries.get(0) instanceof City){
+            System.out.println(String.format("%-40s %-5s %-25s %-15s", "Name", "Code", "District", "Population"));
+        }
+        else if(listOfEntries.get(0) instanceof Country){
+            System.out.println(String.format("%-5s %-50s %-30s %-30s %-15s %-30s", "Code", "Name", "Continent", "Region", "Population", "Capital Name"));
+        }
+        // Print all entries using the right toReportFormat() depending on the object:
+        for(Entry e : listOfEntries){
+            if(e==null)
+                continue;
+            System.out.println(e.toReportFormat());
+        }
     }
 }
 
