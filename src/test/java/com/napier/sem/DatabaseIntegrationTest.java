@@ -14,13 +14,13 @@ public class DatabaseIntegrationTest {
     static void init()
     {
         databaseConnector = DatabaseConnector.getDatabaseConnector();
-        databaseConnector.connect("localhost:3306");
+        databaseConnector.connect("db:3306");
+        databaseConnector.loadData();
     }
 
     @Test
     void loadDataTestNumberOfCities()
     {
-        databaseConnector.loadData();
         int actualNumberOfCities = DatabaseConnector.cities.size();
         int expectedNumberOfCities = 4079;
 
@@ -30,7 +30,6 @@ public class DatabaseIntegrationTest {
     @Test
     void loadDataTestNumberOfCountries()
     {
-        databaseConnector.loadData();
         int actualNumberOfCountries = DatabaseConnector.countries.size();
         int expectedNumberOfCountries = 239;
 
@@ -40,7 +39,6 @@ public class DatabaseIntegrationTest {
     @Test
     void loadDataTestNumberOfLanguages()
     {
-        databaseConnector.loadData();
         int actualNumberOfLanguages = DatabaseConnector.languages.size();
         int expectedNumberOfLanguages = 984;
 
@@ -56,7 +54,6 @@ public class DatabaseIntegrationTest {
     @Test
     void connectTest()
     {
-        databaseConnector.connect("db:3306");
         assertNotNull(DatabaseConnector.getConnection());
     }
 }
