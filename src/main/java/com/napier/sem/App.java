@@ -21,7 +21,16 @@ public class App
 
         // connect and load data:
         //localhost:33060
-        db.connect("localhost:33060");
+
+        if (args.length < 1)
+        {
+            db.connect("localhost:3306");
+        }
+        else
+        {
+            db.connect(args[0]);
+        }
+
         db.loadData();
 
         // Verify contents: check sizes - should be: 239, 4079, 984:
