@@ -44,6 +44,42 @@ public class ReportsIntegrationTest {
     }
 
     /**
+     * Test that getCountriesByPopulation method returns the correct number of countries
+     * when a continent is specified
+     */
+    @Test
+    void getCountriesByPopulationTestContinent(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCountriesByPopulation("Africa", null, 0);
+        int expected = 58;
+        assertEquals(expected, results.size());
+    }
+
+    /**
+     * Test that getCountriesByPopulation method returns the correct number of countries
+     * when a region is specified
+     */
+    @Test
+    void getCountriesByPopulationTestRegion(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCountriesByPopulation(null, "Northern Africa", 0);
+        int expected = 7;
+        assertEquals(expected, results.size());
+    }
+
+    /**
+     * Test that getCountriesByPopulation method returns the correct number of countries
+     * when N is specified
+     */
+    @Test
+    void getCountriesByPopulationTestTopN(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCountriesByPopulation(null, null, 5);
+        int expected = 5;
+        assertEquals(expected, results.size());
+    }
+
+    /**
      * Test that too many parameters return null for getCountriesByPopulation method
      */
     @Test
@@ -51,6 +87,19 @@ public class ReportsIntegrationTest {
         ArrayList<Entry> results = new ArrayList<>();
         results = reports.getCountriesByPopulation("Asia", "North America" ,3);
         assertNull(results);
+    }
+
+    /**
+     * Test that reports.getCountriesByPopulation returns the correct number of countries
+     * when a continent and N is specified.
+     * If there are less results than N, the method returns all results
+     */
+    @Test
+    void getCountriesByPopulationTestContinentTopN(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCountriesByPopulation("Antarctica", null, 10);
+        int expected = 5; // number of countries in Antarctica is less than the specified N (10)
+        assertEquals(expected, results.size());
     }
 
     /**
@@ -81,7 +130,79 @@ public class ReportsIntegrationTest {
         ArrayList<Entry> results = new ArrayList<>();
         results = reports.getCitiesByPopulation("Europe", "Eastern Europe", "California", "Belgium", 2);
         assertNull(results);
+    }
 
+    /**
+     * Test that getCitiesByPopulation returns the correct number of cities
+     * when a continent is specified
+     */
+    @Test
+    void getCitiesByPopulationTestContinent(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCitiesByPopulation("Asia", null, null, null, 0);
+        int expected = 1766;
+        assertEquals(expected, results.size());
+    }
+
+    /**
+     * Test that getCitiesByPopulation returns the correct number of cities
+     * when a region is specified
+     */
+    @Test
+    void getCitiesByPopulationTestRegion(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCitiesByPopulation(null, "Caribbean", null, null, 0);
+        int expected = 58;
+        assertEquals(expected, results.size());
+    }
+
+    /**
+     * Test that getCitiesByPopulation returns the correct number of cities
+     * when a district is specified
+     */
+    @Test
+    void getCitiesByPopulationTestDistrict(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCitiesByPopulation(null, null, "Buenos Aires", null, 0);
+        int expected = 31;
+        assertEquals(expected, results.size());
+    }
+
+    /**
+     * Test that getCitiesByPopulation returns the correct number of cities
+     * when a country is specified
+     */
+    @Test
+    void getCitiesByPopulationTestCountry(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCitiesByPopulation(null, null, null, "Germany", 0);
+        int expected = 93;
+        assertEquals(expected, results.size());
+    }
+
+    /**
+     * Test that getCitiesByPopulation returns the correct number of cities
+     * when N is specified
+     */
+    @Test
+    void getCitiesByPopulationTestTopN(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCitiesByPopulation(null, null, null, null, 100);
+        int expected = 100;
+        assertEquals(expected, results.size());
+    }
+
+    /**
+     * Test that getCitiesByPopulation return the correct number of cities
+     * when a district and N is specified.
+     * If there are less results than N, the method returns all results
+     */
+    @Test
+    void getCitiesByPopulationTestDistrictTopN(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCitiesByPopulation(null, null, "Kyoto", null, 5);
+        int expected = 4; // number of cities in Kyoto District is less than the specified N (5)
+        assertEquals(expected, results.size());
     }
 
     /**
