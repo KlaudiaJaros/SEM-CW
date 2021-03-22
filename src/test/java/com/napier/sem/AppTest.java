@@ -48,5 +48,39 @@ public class AppTest {
         app.printEntries(list);
     }
 
+    /**
+     * Test that printEntries method prints a formatted string with country data
+     */
+    @Test
+    void printEntriesTestPrintsCountry()
+    {
+        ArrayList<Entry> list = new ArrayList<>();
+        Country country = new Country();
+        country.setCode("GBR");
+        country.setName("United Kingdom");
+        country.setContinent("Europe");
+        country.setRegion("British Islands");
+        country.setSurfaceArea(242900.00);
+        country.setPopulation(59623400);
+        country.setCapitalCityID(456);
+        list.add(country);
+        app.printEntries(list);
+    }
 
+    /**
+     * Test that printEntries method prints a formatted string with city data
+     */
+    @Test
+    void printEntriesTestPrintsCity()
+    {
+        ArrayList<Entry> list = new ArrayList<>();
+        City city = new City();
+        city.setId(1);
+        city.setName("Edinburgh");
+        city.setDistrict("Scotland");
+        city.setCountryCode("GB");
+        city.setPopulation(300000);
+        list.add(city);
+        app.printEntries(list);
+    }
 }
