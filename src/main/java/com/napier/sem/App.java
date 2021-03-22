@@ -21,7 +21,7 @@ public class App
 
         // connect and load data:
         //localhost:33060
-        db.connect("localhost:3306");
+        db.connect("localhost:33060");
         db.loadData();
 
         // Verify contents: check sizes - should be: 239, 4079, 984:
