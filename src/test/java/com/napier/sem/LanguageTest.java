@@ -4,9 +4,15 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Unit tests for Language class
+ */
 public class LanguageTest {
     static Language language;
 
+    /**
+     * Initialise Language
+     */
     @BeforeAll
     static void init()
     {
@@ -18,6 +24,9 @@ public class LanguageTest {
 
     }
 
+    /**
+     * Test toString method prints expected values
+     */
     @Test
     void testCityToString(){
 

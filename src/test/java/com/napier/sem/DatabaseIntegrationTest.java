@@ -1,16 +1,17 @@
 package com.napier.sem;
-import com.napier.sem.City;
-import com.napier.sem.DatabaseConnector;
 import org.junit.jupiter.api.*;
-
 import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.HashMap;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Integration tests for DatabaseConnector class
+ */
 public class DatabaseIntegrationTest {
     static DatabaseConnector databaseConnector;
 
+    /**
+     * Initialise connection and load data
+     */
     @BeforeAll
     static void init()
     {
@@ -19,6 +20,9 @@ public class DatabaseIntegrationTest {
         databaseConnector.loadData();
     }
 
+    /**
+     * Ensure the number of cities is correct
+     */
     @Test
     void loadDataTestNumberOfCities()
     {
@@ -28,6 +32,9 @@ public class DatabaseIntegrationTest {
         assertEquals(expectedNumberOfCities, actualNumberOfCities);
     }
 
+    /**
+     * Ensure number of countries is correct
+     */
     @Test
     void loadDataTestNumberOfCountries()
     {
@@ -37,6 +44,9 @@ public class DatabaseIntegrationTest {
         assertEquals(expectedNumberOfCountries, actualNumberOfCountries);
     }
 
+    /**
+     * Ensure number of languages is correct
+     */
     @Test
     void loadDataTestNumberOfLanguages()
     {
@@ -46,18 +56,19 @@ public class DatabaseIntegrationTest {
         assertEquals(expectedNumberOfLanguages, actualNumberOfLanguages);
     }
 
+    /**
+     * Ensure connection is not null
+     */
     @Test
     void getConnectionNotNull()
     {
         Connection connection = DatabaseConnector.getConnection();
         assertNotNull(connection);
     }
-    @Test
-    void connectTest()
-    {
-        assertNotNull(DatabaseConnector.getConnection());
-    }
 
+    /**
+     * Disconnect from database
+     */
     @AfterAll
     static void disconnectFromDatabase()
     {

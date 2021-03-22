@@ -46,6 +46,11 @@ public class Reports {
                 whereClause="WHERE region='" + region + "' ";
             }
 
+            //if everything else is invalid
+            else {
+                return null;
+            }
+
             if (n!=0){
                 limitClause = "LIMIT " + n;
             }
@@ -117,6 +122,11 @@ public class Reports {
             //if getting cities in COUNTRY only
             else if (continent == null && region == null && district == null && country != null) {
                 whereClause = "JOIN country ON country.Code = city.CountryCode WHERE country.Name = '" + country + "' ";
+            }
+
+            //if everything else is invalid
+            else {
+                return null;
             }
 
             // show results for top N cities only
