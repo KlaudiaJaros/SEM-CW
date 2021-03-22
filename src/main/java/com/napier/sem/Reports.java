@@ -19,10 +19,10 @@ public class Reports {
      * @return an ArrayList of sorted countries
      */
 
-    public ArrayList<Country> getCountriesByPopulation(String continent, String region, int n) {
+    public ArrayList<Entry> getCountriesByPopulation(String continent, String region, int n) {
         try {
             // to store and return results:
-            ArrayList<Country> results = new ArrayList<>();
+            ArrayList<Entry> results = new ArrayList<>();
 
             // create a statement and a SQL query string:
             Statement statement = DatabaseConnector.getConnection().createStatement();
@@ -44,6 +44,11 @@ public class Reports {
             // region population report:
             else if(region!=null && continent==null){
                 whereClause="WHERE region='" + region + "' ";
+            }
+
+            //if everything else is invalid
+            else {
+                return null;
             }
 
             if (n!=0){
@@ -81,9 +86,9 @@ public class Reports {
      * @param n top N cities filter
      * @return an array list of sorted cities
      */
-    public ArrayList<City> getCitiesByPopulation(String continent, String region, String district, String country, int n) {
+    public ArrayList<Entry> getCitiesByPopulation(String continent, String region, String district, String country, int n) {
         try {
-            ArrayList<City> results = new ArrayList<>();
+            ArrayList<Entry> results = new ArrayList<>();
 
             //create a statement and a SQL query string:
             Statement statement = DatabaseConnector.getConnection().createStatement();
@@ -117,6 +122,11 @@ public class Reports {
             //if getting cities in COUNTRY only
             else if (continent == null && region == null && district == null && country != null) {
                 whereClause = "JOIN country ON country.Code = city.CountryCode WHERE country.Name = '" + country + "' ";
+            }
+
+            //if everything else is invalid
+            else {
+                return null;
             }
 
             // show results for top N cities only
