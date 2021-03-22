@@ -20,16 +20,14 @@ public class App
         Reports reports = new Reports();
 
         // connect and load data:
-        db.connect();
+        //localhost:33060
+        db.connect("localhost:33060");
         db.loadData();
 
         // Verify contents: check sizes - should be: 239, 4079, 984:
         System.out.println(DatabaseConnector.countries.size());
         System.out.println(DatabaseConnector.cities.size());
         System.out.println(DatabaseConnector.languages.size());
-
-        // Test city (should be Amsterdam):
-        db.getCity(5);
 
         // Test district (Scotland):
         for (City c : DatabaseConnector.cities.values()){

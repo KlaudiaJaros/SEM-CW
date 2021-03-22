@@ -4,9 +4,15 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Unit tests for Country class
+ */
 public class CountryTest {
     static Country country;
 
+    /**
+     * Initialise Country
+     */
     @BeforeAll
     static void init()
     {
@@ -20,6 +26,9 @@ public class CountryTest {
         country.setCapitalCityID(20);
     }
 
+    /**
+     * Test toString method prints expected values
+     */
     @Test
     void testCityToString(){
 
@@ -39,6 +48,9 @@ public class CountryTest {
 
     }
 
+    /**
+     * Test format method formats as expected
+     */
     @Test
     void testCityToReportFormat(){
 
