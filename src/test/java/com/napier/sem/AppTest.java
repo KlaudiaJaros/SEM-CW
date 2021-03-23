@@ -1,7 +1,9 @@
 package com.napier.sem;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.*;
 import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for App class
@@ -82,5 +84,15 @@ public class AppTest {
         city.setPopulation(300000);
         list.add(city);
         app.printEntries(list);
+    }
+
+    /**
+     * Test if the printAllReports method returns the expected number of entries
+     */
+    @Test
+    void printAllReportsCountTest(){
+        app.printAllReports();
+        int expectedCount = 6585;
+        assertEquals(expectedCount, app.entryCount);
     }
 }
