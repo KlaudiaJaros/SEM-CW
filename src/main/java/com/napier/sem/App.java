@@ -7,7 +7,6 @@ import java.util.ArrayList;
  */
 public class App
 {
-    public static int entryCount=0;
     /**
      * Main method
      * @param args args
@@ -18,16 +17,28 @@ public class App
         DatabaseConnector db = DatabaseConnector.getDatabaseConnector();
 
         // connect and load data:
-        //localhost:33060
-        db.connect("db:3306");
-        db.loadData();
 
+        if (args.length < 1)
+        {
+            db.connect("localhost:3306");
+        }
+        else
+        {
+            db.connect(args[0]);
+        }
+
+        // load data and print all reports:
+        db.loadData();
         printAllReports();
 
         // disconnect:
         db.disconnect();
     }
 
+    /**
+     * Print all reports as per coursework specification
+     * Implemented reports: City and Country reports
+     */
     public static void printAllReports(){
         // initialise reports class:
         Reports reports = new Reports();
