@@ -1,7 +1,9 @@
 package com.napier.sem;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.*;
 import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for App class
