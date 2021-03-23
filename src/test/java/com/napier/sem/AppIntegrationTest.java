@@ -2,6 +2,8 @@ package com.napier.sem;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /***
  * Integration test for App.java
@@ -25,6 +27,7 @@ public class AppIntegrationTest {
     @Test
     void printReportsTest(){
         app.printAllReports();
+
     }
 
 }
