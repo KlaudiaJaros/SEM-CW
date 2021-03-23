@@ -85,14 +85,4 @@ public class AppTest {
         list.add(city);
         app.printEntries(list);
     }
-
-    /**
-     * Test if the printAllReports method returns the expected number of entries
-     */
-    @Test
-    void printAllReportsCountTest(){
-        app.printAllReports();
-        int expectedCount = 6585;
-        assertEquals(expectedCount, app.entryCount);
-    }
 }
