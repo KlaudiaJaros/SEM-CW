@@ -30,7 +30,7 @@ public class CountryTest {
      * Test toString method prints expected values
      */
     @Test
-    void testCityToString(){
+    void testCountryToString(){
 
         String expectedToString =  "Country{" +
                 "code=" + country.getCode() +
@@ -52,7 +52,7 @@ public class CountryTest {
      * Test format method formats as expected
      */
     @Test
-    void testCityToReportFormat(){
+    void testCountryToReportFormat(){
 
         String expectedToString =  String.format("%-5s %-50s %-30s %-30s %-15s %-30s",
                 "GBR", "United Kingdom", "Europe","British Islands" , 59623400, "N/A");

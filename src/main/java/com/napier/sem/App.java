@@ -20,7 +20,7 @@ public class App
 
         if (args.length < 1)
         {
-            db.connect("localhost:3306");
+            db.connect("localhost:33060");
         }
         else
         {
@@ -141,6 +141,7 @@ public class App
         }
         // Print header:
         if(listOfEntries.get(0) instanceof City){
+
             System.out.println(String.format("%-40s %-5s %-25s %-15s", "Name", "Code", "District", "Population"));
         }
         else if(listOfEntries.get(0) instanceof Country){
