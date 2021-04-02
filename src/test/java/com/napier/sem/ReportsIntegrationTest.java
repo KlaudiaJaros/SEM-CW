@@ -206,6 +206,67 @@ public class ReportsIntegrationTest {
     }
 
     /**
+     * Test that getLanguageReport
+     * does not return an empty string
+     */
+    @Test
+    void getLanguageReportTest(){
+        String results = reports.getLanguageReport();
+        assertNotNull(results);
+    }
+
+    /**
+     * Test runCountryPopulationReport method
+     */
+    @Test
+    void runCountryPopulationReportTest(){
+        reports.runCountryPopulationReport();
+    }
+
+    /**
+     * Test runRegionPopulationReport method
+     */
+    @Test
+    void runRegionPopulationReportTest(){
+        reports.runRegionPopulationReport();
+    }
+
+    /**
+     * Test runContinentPopulationReport method
+     */
+    @Test
+    void runContinentPopulationReportTest(){
+        reports.runContinentPopulationReport();
+    }
+
+    /**
+     * Test that getPopulation does not return -1
+     * with one parameter
+     */
+    @Test
+    void getPopulationTestValid(){
+        assertNotEquals(-1, reports.getPopulation("Europe", null, null, null, null));
+    }
+
+    /**
+     * Test that getPopulation does return -1
+     * with all parameters
+     */
+    @Test
+    void getPopulationTestInvalid(){
+        assertEquals(-1, reports.getPopulation("Europe","France", "Buenos Aires", "DC", "Paris"));
+    }
+
+    /**
+     * Test that getPopulation does not return -1
+     * with no parameters
+     */
+    @Test
+    void getPopulationTestNull(){
+        assertNotEquals(-1, reports.getPopulation(null, null, null, null, null));
+    }
+
+    /**
      *  Disconnect from database
      */
     @AfterAll

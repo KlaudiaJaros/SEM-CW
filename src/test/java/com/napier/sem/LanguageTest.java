@@ -28,7 +28,7 @@ public class LanguageTest {
      * Test toString method prints expected values
      */
     @Test
-    void testCityToString(){
+    void testLanguageToString(){
 
         String expectedToString =  "Language{" +
                 "name='" + language.getName() + '\'' +
