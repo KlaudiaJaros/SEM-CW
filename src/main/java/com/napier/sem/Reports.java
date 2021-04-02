@@ -158,4 +158,73 @@ public class Reports {
         }
     }
 
+    /**
+     * Gets all the capital cities sorted by population descending. Runs an SQL query and returns ids.
+     * The cities information is picked from the previously loaded HashMap by their id into an ArrayList and returned.
+     * @param continent continent filter
+     * @param region region filter
+     * @param n top N capital cities filter
+     * @return an array list of sorted capital cities
+     */
+    public ArrayList<Entry> getCapitalCitiesByPopulation (String continent, String region, int n) {
+        try {
+
+            ArrayList<Entry> results = new ArrayList<>();
+
+            //create a statement and a SQL query string:
+            Statement statement = DatabaseConnector.getConnection().createStatement();
+
+            // to store where clause to filter results if required
+            String whereClause = "";
+
+            // to store limit clause if N is provided by user
+            String limitClause = "";
+
+            // if getting ALL capital cities
+            if (continent == null && region == null) {
+                whereClause = " ";
+            }
+
+            // if getting capital cities in continent
+            else if (continent!= null && region == null){
+                whereClause = "AND country.Continent = '" + continent + "' ";
+            }
+
+            // if getting capital cities in region
+            else if (continent== null && region != null){
+                whereClause = "AND country.Region = '" + region + "' ";
+            }
+
+            else {
+                return null;
+            }
+
+
+            if (n != 0) {
+                limitClause = "LIMIT " + n;
+            }
+
+            String query = "SELECT id FROM city JOIN country on country.Code = city.CountryCode WHERE country.Capital = city.id " +
+                    whereClause + "ORDER BY city.Population DESC " +
+                    limitClause;
+
+            // execute the SQL statement to get results
+            ResultSet result = statement.executeQuery(query);
+
+            // while result has another line
+            while (result.next()) {
+
+                int id = result.getInt("id");
+                results.add(DatabaseConnector.capitalCities.get(id));
+            }
+
+            return results;
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to load capital cities.");
+            return null;
+        }
+    }
 }

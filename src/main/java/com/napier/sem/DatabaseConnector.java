@@ -19,6 +19,7 @@ public class DatabaseConnector {
     public static HashMap<String, Country> countries;
     public static HashMap<Integer, City> cities;
     public static HashMap<String, Language> languages;
+    public static HashMap<Integer, City> capitalCities;
 
     /**
      * Private constructor only reachable from within this class.
@@ -117,6 +118,9 @@ public class DatabaseConnector {
 
         languages=new HashMap<>();
         languages=loadAllLanguages();
+
+        capitalCities=new HashMap<>();
+        capitalCities=loadAllCapitalCities();
     }
 
     /**
@@ -234,5 +238,43 @@ public class DatabaseConnector {
             System.out.println("Failed to load languages.");
             return null;
         }
+    }
+
+    /***
+     * Returns a HashMap of all capital cities from the world database
+     * (with only the required data for the capital cities reports(district unnecessary))
+     * @return HashMap of type City or null if unsuccessful
+     */
+    private HashMap<Integer, City> loadAllCapitalCities()
+    {
+        try{
+            // create a statement and a SQL query string:
+            Statement statement = connection.createStatement();
+            String query = "SELECT ID, city.Name, CountryCode, city.Population FROM city JOIN country ON city.CountryCode = country.Code WHERE city.id = country.Capital ";
+
+            // execute SQL statement:
+            ResultSet result = statement.executeQuery(query);
+
+            // ArrayList to save results:
+            HashMap<Integer, City> capitalCities  = new HashMap<>();
+
+            // while the result has another line:
+            while (result.next()){
+                City capitalCity = new City();
+                capitalCity.setId(result.getInt("ID"));
+                capitalCity.setName(result.getString("Name"));
+                capitalCity.setCountryCode(result.getString("CountryCode"));
+                capitalCity.setPopulation(result.getInt("Population"));
+                capitalCity.setDistrict(null);
+                capitalCities.put(capitalCity.getId(), capitalCity);
+            }
+            return capitalCities;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Failed to load capital cities.");
+            return null;
+        }
+
     }
 }

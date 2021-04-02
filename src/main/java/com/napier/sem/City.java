@@ -110,7 +110,12 @@ public class City implements Entry {
      * @return formatted city string
      */
     public String toReportFormat(){
-        String formattedCityString = String.format("%-40s %-5s %-25s %-15s", name, countryCode, district, population);
+        String formattedCityString;
+        if (district == null){
+            formattedCityString = String.format("%-40s %-5s %-15s", name, countryCode, population);
+        } else {
+            formattedCityString = String.format("%-40s %-5s %-25s %-15s", name, countryCode, district, population);
+        }
         return formattedCityString;
     }
 }

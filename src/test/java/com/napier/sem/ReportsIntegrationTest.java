@@ -23,6 +23,8 @@ public class ReportsIntegrationTest {
 
     }
 
+    // COUNTRIES TESTS:
+
     /**
      * Test invalid parameters return null for getCountriesByPopulation method
      */
@@ -101,6 +103,8 @@ public class ReportsIntegrationTest {
         int expected = 5; // number of countries in Antarctica is less than the specified N (10)
         assertEquals(expected, results.size());
     }
+
+    // CITIES TESTS:
 
     /**
      * Test invalid parameters return null for getCitiesByPopulation method
@@ -202,6 +206,84 @@ public class ReportsIntegrationTest {
         ArrayList<Entry> results = new ArrayList<>();
         results = reports.getCitiesByPopulation(null, null, "Kyoto", null, 5);
         int expected = 4; // number of cities in Kyoto District is less than the specified N (5)
+        assertEquals(expected, results.size());
+    }
+
+    //CAPITAL CITIES TESTS:
+
+    /**
+     *  Test that getCapitalCitiesByPopulation method returns null if parameters are invalid
+     */
+    @Test
+    void getCapitalCitiesByPopulationNullTest(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCapitalCitiesByPopulation("not a continent","not a region", -5);
+        assertNull(results);
+    }
+
+    /**
+     * Test that getCapitalCityByPopulation returns ALL capital cities if no filter parameter is given
+     */
+    @Test
+    void getCapitalCitiesByPopulationTestNullParameters(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCapitalCitiesByPopulation(null,null,0);
+        assertEquals(DatabaseConnector.capitalCities.size(), results.size());
+    }
+
+    /**
+     * Test that getCapitalCityByPopulation returns null if there's too many parameters
+     */
+    @Test
+    void getCapitalCitiesByPopulationOverloadTest(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCapitalCitiesByPopulation("Europe","North America",5);
+        assertNull(results);
+    }
+
+    /**
+     * Test that getCapitalCityByPopulation returns the right number of filtered capital cities results if a continent parameter is provided
+     */
+    @Test
+    void getCapitalCitiesByPopulationTestContinent(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCapitalCitiesByPopulation("Asia",null,0);
+        int expected = 51;
+        assertEquals(expected, results.size());
+    }
+
+    /**
+     * Test that getCapitalCityByPopulation returns the right number of filtered capital cities results if a region parameter is provided
+     */
+    @Test
+    void getCapitalCitiesByPopulationTestRegion(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCapitalCitiesByPopulation(null,"Northern Africa", 0);
+        int expected = 7;
+        assertEquals(expected, results.size());
+    }
+
+    /**
+     * Test that getCapitalCityByPopulation returns the correct number of countries when N is specified.
+     * If there are less results than N, the method returns only available results.
+     */
+    @Test
+    void getCapitalCitiesByPopulationTestTopN(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCapitalCitiesByPopulation(null,null,5);
+        int expected = 5;
+        assertEquals(expected, results.size());
+    }
+
+    /**
+     * Test that getCapitalCityByPopulation returns the correct number of countries when a region and N is specified.
+     * If there are less results than N, the method returns only available results.
+     */
+    @Test
+    void getCapitalCitiesByPopulationTestRegionTopN(){
+        ArrayList<Entry> results = new ArrayList<>();
+        results = reports.getCapitalCitiesByPopulation(null,"Northern Africa",25);
+        int expected = 7; // there are only 7 capital cities in Northern Africa region so should only return 7 even though the limit is 25
         assertEquals(expected, results.size());
     }
 

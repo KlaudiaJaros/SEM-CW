@@ -126,6 +126,37 @@ public class App
         System.out.println("List the top N cities in a district organised by largest population to smallest:");
         ArrayList<Entry> cityByDistrictTopN = reports.getCitiesByPopulation(null,null,"Dubai",null,5);
         printEntries(cityByDistrictTopN);
+
+        // List of all the capital cities in the world organised by largest population to smallest:
+        System.out.println("List of all the capital cities in the world organised by largest population to smallest:");
+        ArrayList<Entry> capitalCityResult = reports.getCapitalCitiesByPopulation(null,null,0);
+        printEntries(capitalCityResult);
+
+        // List of all the capital cities in a continent organised by largest population to smallest:
+        System.out.println("List of all the capital cities in a continent organised by largest population to smallest:");
+        ArrayList<Entry> capitalCityByContinent = reports.getCapitalCitiesByPopulation("Europe",null,0);
+        printEntries(capitalCityByContinent);
+
+        // List of all the capital cities in a region organised by largest population to smallest:
+        System.out.println("List of all the capital cities in a region organised by largest population to smallest:");
+        ArrayList<Entry> capitalCityByRegion = reports.getCapitalCitiesByPopulation(null,"Eastern Europe",0);
+        printEntries(capitalCityByRegion);
+
+        // List of top N the capital cities in the world organised by largest population to smallest:
+        System.out.println("List of top N the capital cities in the world organised by largest population to smallest:");
+        ArrayList<Entry> capitalCityResultTopN = reports.getCapitalCitiesByPopulation(null,null,5);
+        printEntries(capitalCityResultTopN);
+
+        // List of top N the capital cities in a continent organised by largest population to smallest:
+        System.out.println("List of top N the capital cities in a continent organised by largest population to smallest:");
+        ArrayList<Entry> capitalCityByContinentTopN = reports.getCapitalCitiesByPopulation("Europe",null,5);
+        printEntries(capitalCityByContinentTopN);
+
+        // List of top N the capital cities in a region organised by largest population to smallest:
+        System.out.println("List of top N the capital cities in a region organised by largest population to smallest:");
+        ArrayList<Entry> capitalCityByRegionTopN = reports.getCapitalCitiesByPopulation(null,"Eastern Europe",5);
+        printEntries(capitalCityByRegionTopN);
+
     }
 
     /**
@@ -141,8 +172,11 @@ public class App
         }
         // Print header:
         if(listOfEntries.get(0) instanceof City){
-
-            System.out.println(String.format("%-40s %-5s %-25s %-15s", "Name", "Code", "District", "Population"));
+            if (((City) listOfEntries.get(0)).getDistrict() == null) {
+                System.out.println(String.format("%-40s %-5s %-15s", "Name", "Code", "Population"));
+            } else {
+                System.out.println(String.format("%-40s %-5s %-25s %-15s", "Name", "Code", "District", "Population"));
+            }
         }
         else if(listOfEntries.get(0) instanceof Country){
             System.out.println(String.format("%-5s %-50s %-30s %-30s %-15s %-30s", "Code", "Name", "Continent", "Region", "Population", "Capital Name"));

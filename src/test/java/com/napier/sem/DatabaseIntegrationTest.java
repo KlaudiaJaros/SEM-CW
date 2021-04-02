@@ -57,6 +57,18 @@ public class DatabaseIntegrationTest {
     }
 
     /**
+     * Ensure number of capital cities is correct
+     */
+    @Test
+    void loadDataTestNumberOfCapitalCities()
+    {
+        int actualNumberOfCapitalCities = DatabaseConnector.capitalCities.size();
+        int expectedNumberOfCapitalCities = 232;
+
+        assertEquals(expectedNumberOfCapitalCities, actualNumberOfCapitalCities);
+    }
+
+    /**
      * Ensure connection is not null
      */
     @Test
