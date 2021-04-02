@@ -1,5 +1,6 @@
 package com.napier.sem;
 
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.*;
@@ -377,11 +378,11 @@ public class Reports {
 
     public String getLanguageReport() {
         // initialise the number of people who speak these languages
-        long chineseSpeakers = 0;
-        long englishSpeakers = 0;
-        long hindiSpeakers = 0;
-        long spanishSpeakers = 0;
-        long arabicSpeakers = 0;
+        double chineseSpeakers = 0;
+        double englishSpeakers = 0;
+        double hindiSpeakers = 0;
+        double spanishSpeakers = 0;
+        double arabicSpeakers = 0;
 
         for (Language item: DatabaseConnector.languages.values())
         {
@@ -389,9 +390,9 @@ public class Reports {
                     item.getName().equals("Spanish") || item.getName().equals("Arabic")) {
 
                 // get this country's total population
-                long countryPopulation = DatabaseConnector.countries.get(item.getCountryCode()).getPopulation();
+                double countryPopulation = DatabaseConnector.countries.get(item.getCountryCode()).getPopulation();
                 // get this country's language speaker population
-                long population = (long) ((item.getPercentage() * countryPopulation) / 100);
+                double population =  ((item.getPercentage() * countryPopulation) / 100);
 
                 switch (item.getName()) {
                     case "Chinese":
@@ -416,7 +417,7 @@ public class Reports {
         }
 
         // create an array list with numbers of people who speak these languages
-        ArrayList<Long> languagesPopulations = new ArrayList();
+        ArrayList<Double> languagesPopulations = new ArrayList();
         languagesPopulations.add(chineseSpeakers);
         languagesPopulations.add(englishSpeakers);
         languagesPopulations.add(hindiSpeakers);
@@ -428,29 +429,31 @@ public class Reports {
         Collections.reverse(languagesPopulations);
 
         // create an array list with these language names and sort it to match languagesPopulations
-        ArrayList<String> languages = new ArrayList();
+        //ArrayList<String> languages = new ArrayList();
+        String[] languages= new String[5];
+
         // get new list order
-        languages.add(languagesPopulations.indexOf(chineseSpeakers), "Chinese");
-        languages.add(languagesPopulations.indexOf(englishSpeakers), "English");
-        languages.add(languagesPopulations.indexOf(hindiSpeakers), "Hindi");
-        languages.add(languagesPopulations.indexOf(spanishSpeakers), "Spanish");
-        languages.add(languagesPopulations.indexOf(arabicSpeakers), "Arabic");
+        languages[languagesPopulations.indexOf(chineseSpeakers)]= "Chinese";
+        languages[languagesPopulations.indexOf(englishSpeakers)] = "English";
+        languages[languagesPopulations.indexOf(hindiSpeakers)] = "Hindi";
+        languages[languagesPopulations.indexOf(spanishSpeakers)] = "Spanish";
+        languages[languagesPopulations.indexOf(arabicSpeakers)] = "Arabic";
 
         // get world population from an SQL query
-        long worldPopulation = getPopulation(null, null, null, null, null);
+        double worldPopulation = getPopulation(null, null, null, null, null);
         String report = "";
         String header = String.format("%-20s %-25s %-20s",
                 "Name", "Population", "Percentage");
-        report.concat(header);
-        report.concat("\n");
+        report=report.concat(header);
+        report=report.concat("\n");
 
-        for (int i = 0;  i < languages.size();  i++)
+        for (int i = 0;  i < languages.length;  i++)
         {
-            float percentage = (languagesPopulations.get(i) * 100) / worldPopulation;
+            double percentage = (languagesPopulations.get(i) * 100) / worldPopulation;
             String formattedLanguageReportString = String.format("%-20s %-25s %-20s",
-                    languages.get(i), languagesPopulations.get(i), percentage);
-            report.concat(formattedLanguageReportString);
-            report.concat("\n");
+                    languages[i], Math.round(languagesPopulations.get(i)), percentage);
+            report=report.concat(formattedLanguageReportString);
+            report=report.concat("\n");
         }
 
         return report;
