@@ -150,9 +150,13 @@ public class App
         System.out.println("City(Oxford) population: " + reports.getPopulation(null, null, null, null, "Oxford"));
 
          */
-        reports.runContinentPopulationReport();
-        reports.runCountryPopulationReport();
-        reports.runRegionPopulationReport();
+//        reports.runContinentPopulationReport();
+//        reports.runCountryPopulationReport();
+//        reports.runRegionPopulationReport();
+
+        // LANGUAGE REPORT
+        System.out.println("LANGUAGE REPORT:");
+        System.out.println(reports.getLanguageReport());
 
     }
 
