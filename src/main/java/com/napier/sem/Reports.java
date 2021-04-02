@@ -3,6 +3,7 @@ package com.napier.sem;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * A class that stores all the methods for generating reports from the SQL database
