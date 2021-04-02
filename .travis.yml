@@ -33,7 +33,7 @@ jobs:
         - echo "Deploying to GitHub Releases"
         - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
       before_deploy:
-        - git config --local user.name "KlaudiaJaros"
+        - git config --local user.name "Klaudia Jaros"
         - git config --local user.email "klaudiawjaros@gmail.com"
         - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y-%m-%d')-$(git log --format=%h -1)}
         - git tag $TRAVIS_TAG
