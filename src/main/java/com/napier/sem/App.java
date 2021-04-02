@@ -43,6 +43,7 @@ public class App
         // initialise reports class:
         Reports reports = new Reports();
 
+        /*
         // COUNTRY REPORTS:
 
         // List all the countries in the world largest population to smallest:
@@ -126,6 +127,33 @@ public class App
         System.out.println("List the top N cities in a district organised by largest population to smallest:");
         ArrayList<Entry> cityByDistrictTopN = reports.getCitiesByPopulation(null,null,"Dubai",null,5);
         printEntries(cityByDistrictTopN);
+
+         */
+
+        /*
+        // Population of the world:
+        System.out.println("World population: " + reports.getPopulation(null, null, null, null, null));
+
+        // Population of a continent:
+        System.out.println("Continent(Asia) population: " + reports.getPopulation("Asia", null, null, null, null));
+
+        // Population of a country:
+        System.out.println("Country(Egypt) population: " + reports.getPopulation(null, "Egypt", null, null, null));
+
+        // Population of a region:
+        System.out.println("Region(Western Europe) population: " + reports.getPopulation(null, null, "Western Europe", null, null));
+
+        // Population of a district:
+        System.out.println("District(Buenos Aires) population: " + reports.getPopulation(null, null, null, "Buenos Aires", null));
+
+        // Population of a city:
+        System.out.println("City(Oxford) population: " + reports.getPopulation(null, null, null, null, "Oxford"));
+
+         */
+        reports.runContinentPopulationReport();
+        reports.runCountryPopulationReport();
+        reports.runRegionPopulationReport();
+
     }
 
     /**

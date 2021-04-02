@@ -55,7 +55,7 @@ public class CountryTest {
     void testCountryToReportFormat(){
 
         String expectedToString =  String.format("%-5s %-50s %-30s %-30s %-15s %-30s",
-                "GBR", "United Kingdom", "Europe","British Islands" , 59623400, "N/A");
+                "GBR", "United Kingdom", "Europe","British Islands" , 59623400, "London");
 
         String actualToString=country.toReportFormat();
 
