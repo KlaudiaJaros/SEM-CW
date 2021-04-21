@@ -34,7 +34,7 @@ public class DatabaseIntegrationTest {
         city.setId(1);
         city.setName("Edinburgh");
         city.setDistrict("Scotland");
-        city.setCountryCode("GB");
+        city.setCountryCode("GBR");
         city.setPopulation(300000);
     }
 
@@ -116,7 +116,7 @@ public class DatabaseIntegrationTest {
     @Test
     void testCityToReportFormat(){
 
-        String expectedToString =  String.format("%-40s %-5s %-25s %-15s", "Edinburgh", "GB", "Scotland", "300000");
+        String expectedToString =  String.format("%-40s %-50s %-25s %-15s", "Edinburgh", "United Kingdom", "Scotland", "300000");
 
         String actualToString=city.toReportFormat();
 
