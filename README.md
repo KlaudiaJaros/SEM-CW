@@ -11,6 +11,7 @@ Patrycja (Scrum Master)
 
 
 - Master Build Status [![Build Status](https://travis-ci.com/KlaudiaJaros/SEM-CW.svg?branch=master)](https://travis-ci.com/KlaudiaJaros/SEM-CW)
+- Develop Build Status [![Build Status](https://travis-ci.com/KlaudiaJaros/SEM-CW.svg?branch=develop)](https://travis-ci.com/KlaudiaJaros/SEM-CW)  
 - License [![LICENSE](https://img.shields.io/github/license/KlaudiaJaros/SEM-CW.svg?style=flat-square)](https://github.com/KlaudiaJaros/SEM-CW/blob/master/LICENSE)
 - Release [![Releases](https://img.shields.io/github/release/KlaudiaJaros/SEM-CW/all.svg?style=flat-square)](https://github.com/KlaudiaJaros/SEM-CW/releases)
 - Code coverage [![codecov](https://codecov.io/gh/KlaudiaJaros/SEM-CW/branch/master/graph/badge.svg?token=AYX9BK85IP)](https://codecov.io/gh/KlaudiaJaros/SEM-CW)

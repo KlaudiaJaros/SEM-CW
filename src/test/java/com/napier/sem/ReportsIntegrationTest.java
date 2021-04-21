@@ -30,8 +30,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCountriesByPopulationNullTest(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCountriesByPopulation("invalid", "invalid", -10);
+        ArrayList<Entry> results = reports.getCountriesByPopulation("invalid", "invalid", -10);
         assertNull(results);
     }
 
@@ -40,8 +39,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCountriesByPopulationTestNullParameters(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCountriesByPopulation(null, null, 0);
+        ArrayList<Entry> results = reports.getCountriesByPopulation(null, null, 0);
         assertEquals(DatabaseConnector.countries.size(), results.size());
     }
 
@@ -51,8 +49,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCountriesByPopulationTestContinent(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCountriesByPopulation("Africa", null, 0);
+        ArrayList<Entry> results = reports.getCountriesByPopulation("Africa", null, 0);
         int expected = 58;
         assertEquals(expected, results.size());
     }
@@ -63,8 +60,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCountriesByPopulationTestRegion(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCountriesByPopulation(null, "Northern Africa", 0);
+        ArrayList<Entry> results = reports.getCountriesByPopulation(null, "Northern Africa", 0);
         int expected = 7;
         assertEquals(expected, results.size());
     }
@@ -75,8 +71,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCountriesByPopulationTestTopN(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCountriesByPopulation(null, null, 5);
+        ArrayList<Entry> results = reports.getCountriesByPopulation(null, null, 5);
         int expected = 5;
         assertEquals(expected, results.size());
     }
@@ -86,8 +81,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCountriesByPopulationOverloadTest() {
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCountriesByPopulation("Asia", "North America" ,3);
+        ArrayList<Entry> results = reports.getCountriesByPopulation("Asia", "North America" ,3);
         assertNull(results);
     }
 
@@ -98,8 +92,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCountriesByPopulationTestContinentTopN(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCountriesByPopulation("Antarctica", null, 10);
+        ArrayList<Entry> results = reports.getCountriesByPopulation("Antarctica", null, 10);
         int expected = 5; // number of countries in Antarctica is less than the specified N (10)
         assertEquals(expected, results.size());
     }
@@ -111,8 +104,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCitiesByPopulationNullTest(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCitiesByPopulation("invalid", "invalid", "invalid", "invalid", -10);
+        ArrayList<Entry> results = reports.getCitiesByPopulation("invalid", "invalid", "invalid", "invalid", -10);
         assertNull(results);
     }
 
@@ -121,8 +113,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCitiesByPopulationTestNullParameters(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCitiesByPopulation(null, null, null, null, 0);
+        ArrayList<Entry> results = reports.getCitiesByPopulation(null, null, null, null, 0);
         assertEquals(DatabaseConnector.cities.size(), results.size());
     }
 
@@ -131,8 +122,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCitiesByPopulationOverloadTest() {
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCitiesByPopulation("Europe", "Eastern Europe", "California", "Belgium", 2);
+        ArrayList<Entry> results = reports.getCitiesByPopulation("Europe", "Eastern Europe", "California", "Belgium", 2);
         assertNull(results);
     }
 
@@ -142,8 +132,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCitiesByPopulationTestContinent(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCitiesByPopulation("Asia", null, null, null, 0);
+        ArrayList<Entry> results = reports.getCitiesByPopulation("Asia", null, null, null, 0);
         int expected = 1766;
         assertEquals(expected, results.size());
     }
@@ -154,8 +143,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCitiesByPopulationTestRegion(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCitiesByPopulation(null, "Caribbean", null, null, 0);
+        ArrayList<Entry> results = reports.getCitiesByPopulation(null, "Caribbean", null, null, 0);
         int expected = 58;
         assertEquals(expected, results.size());
     }
@@ -166,8 +154,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCitiesByPopulationTestDistrict(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCitiesByPopulation(null, null, "Buenos Aires", null, 0);
+        ArrayList<Entry> results = reports.getCitiesByPopulation(null, null, "Buenos Aires", null, 0);
         int expected = 31;
         assertEquals(expected, results.size());
     }
@@ -178,8 +165,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCitiesByPopulationTestCountry(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCitiesByPopulation(null, null, null, "Germany", 0);
+        ArrayList<Entry> results = reports.getCitiesByPopulation(null, null, null, "Germany", 0);
         int expected = 93;
         assertEquals(expected, results.size());
     }
@@ -190,8 +176,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCitiesByPopulationTestTopN(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCitiesByPopulation(null, null, null, null, 100);
+        ArrayList<Entry> results = reports.getCitiesByPopulation(null, null, null, null, 100);
         int expected = 100;
         assertEquals(expected, results.size());
     }
@@ -203,8 +188,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCitiesByPopulationTestDistrictTopN(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCitiesByPopulation(null, null, "Kyoto", null, 5);
+        ArrayList<Entry> results = reports.getCitiesByPopulation(null, null, "Kyoto", null, 5);
         int expected = 4; // number of cities in Kyoto District is less than the specified N (5)
         assertEquals(expected, results.size());
     }
@@ -216,8 +200,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCapitalCitiesByPopulationNullTest(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCapitalCitiesByPopulation("not a continent","not a region", -5);
+        ArrayList<Entry> results = reports.getCapitalCitiesByPopulation("not a continent","not a region", -5);
         assertNull(results);
     }
 
@@ -226,8 +209,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCapitalCitiesByPopulationTestNullParameters(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCapitalCitiesByPopulation(null,null,0);
+        ArrayList<Entry> results = reports.getCapitalCitiesByPopulation(null,null,0);
         assertEquals(DatabaseConnector.capitalCities.size(), results.size());
     }
 
@@ -236,8 +218,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCapitalCitiesByPopulationOverloadTest(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCapitalCitiesByPopulation("Europe","North America",5);
+        ArrayList<Entry> results = reports.getCapitalCitiesByPopulation("Europe","North America",5);
         assertNull(results);
     }
 
@@ -246,8 +227,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCapitalCitiesByPopulationTestContinent(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCapitalCitiesByPopulation("Asia",null,0);
+        ArrayList<Entry> results = reports.getCapitalCitiesByPopulation("Asia",null,0);
         int expected = 51;
         assertEquals(expected, results.size());
     }
@@ -257,8 +237,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCapitalCitiesByPopulationTestRegion(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCapitalCitiesByPopulation(null,"Northern Africa", 0);
+        ArrayList<Entry> results = reports.getCapitalCitiesByPopulation(null,"Northern Africa", 0);
         int expected = 7;
         assertEquals(expected, results.size());
     }
@@ -269,8 +248,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCapitalCitiesByPopulationTestTopN(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCapitalCitiesByPopulation(null,null,5);
+        ArrayList<Entry> results = reports.getCapitalCitiesByPopulation(null,null,5);
         int expected = 5;
         assertEquals(expected, results.size());
     }
@@ -281,8 +259,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void getCapitalCitiesByPopulationTestRegionTopN(){
-        ArrayList<Entry> results = new ArrayList<>();
-        results = reports.getCapitalCitiesByPopulation(null,"Northern Africa",25);
+        ArrayList<Entry> results = reports.getCapitalCitiesByPopulation(null,"Northern Africa",25);
         int expected = 7; // there are only 7 capital cities in Northern Africa region so should only return 7 even though the limit is 25
         assertEquals(expected, results.size());
     }
@@ -302,6 +279,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void runCountryPopulationReportTest(){
+        assertNotNull(reports);
         reports.runCountryPopulationReport();
     }
 
@@ -310,6 +288,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void runRegionPopulationReportTest(){
+        assertNotNull(reports);
         reports.runRegionPopulationReport();
     }
 
@@ -318,6 +297,7 @@ public class ReportsIntegrationTest {
      */
     @Test
     void runContinentPopulationReportTest(){
+        assertNotNull(reports);
         reports.runContinentPopulationReport();
     }
 

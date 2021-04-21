@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class DatabaseIntegrationTest {
     static DatabaseConnector databaseConnector;
+    static Country country;
+    static City city;
 
     /**
      * Initialise connection and load data
@@ -18,6 +20,22 @@ public class DatabaseIntegrationTest {
         databaseConnector = DatabaseConnector.getDatabaseConnector();
         databaseConnector.connect("localhost:33060");
         databaseConnector.loadData();
+
+        country = new Country();
+        country.setCode("GBR");
+        country.setName("United Kingdom");
+        country.setContinent("Europe");
+        country.setRegion("British Islands");
+        country.setSurfaceArea(242900.00);
+        country.setPopulation(59623400);
+        country.setCapitalCityID(456);
+
+        city = new City();
+        city.setId(1);
+        city.setName("Edinburgh");
+        city.setDistrict("Scotland");
+        city.setCountryCode("GB");
+        city.setPopulation(300000);
     }
 
     /**
@@ -76,6 +94,33 @@ public class DatabaseIntegrationTest {
     {
         Connection connection = DatabaseConnector.getConnection();
         assertNotNull(connection);
+    }
+
+    /**
+     * Test format method formats as expected
+     */
+    @Test
+    void testCountryToReportFormat(){
+
+        String expectedToString =  String.format("%-5s %-50s %-30s %-30s %-15s %-30s",
+                "GBR", "United Kingdom", "Europe","British Islands" , 59623400, "London");
+
+        String actualToString=country.toReportFormat();
+
+        assertEquals(expectedToString, actualToString);
+    }
+
+    /**
+     * Test format method formats as expected
+     */
+    @Test
+    void testCityToReportFormat(){
+
+        String expectedToString =  String.format("%-40s %-5s %-25s %-15s", "Edinburgh", "GB", "Scotland", "300000");
+
+        String actualToString=city.toReportFormat();
+
+        assertEquals(expectedToString, actualToString);
     }
 
     /**

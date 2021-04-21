@@ -1,9 +1,10 @@
 package com.napier.sem;
 
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.*;
 import java.util.ArrayList;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 
 /**
  * Unit tests for App class
@@ -26,7 +27,8 @@ public class AppTest {
     @Test
     void printEntriesTestNull()
     {
-        app.printEntries(null);
+        assertNotNull(app);
+       app.printEntries(null);
     }
 
     /**
@@ -36,6 +38,7 @@ public class AppTest {
     void printEntriesTestEmpty()
     {
         ArrayList<Entry> list = new ArrayList<>();
+        assertNotNull(app);
         app.printEntries(list);
     }
 
@@ -47,6 +50,7 @@ public class AppTest {
     {
         ArrayList<Entry> list = new ArrayList<>();
         list.add(null);
+        assertNotNull(app);
         app.printEntries(list);
     }
 
@@ -66,6 +70,7 @@ public class AppTest {
         country.setPopulation(59623400);
         country.setCapitalCityID(456);
         list.add(country);
+        assertNotNull(app);
         app.printEntries(list);
     }
 
@@ -83,6 +88,7 @@ public class AppTest {
         city.setCountryCode("GB");
         city.setPopulation(300000);
         list.add(city);
+        assertNotNull(app);
         app.printEntries(list);
     }
 }

@@ -72,7 +72,7 @@ public class App
 
         // List the top N countries in a region largest population to smallest:
         System.out.println("List the top N countries in a region largest population to smallest:");
-        ArrayList<Entry> byRegionTopN = reports.getCountriesByPopulation(null, "Eastern Europe", 0);
+        ArrayList<Entry> byRegionTopN = reports.getCountriesByPopulation(null, "Eastern Europe", 5);
         printEntries(byRegionTopN);
 
         // CITY REPORTS:
@@ -157,7 +157,7 @@ public class App
         ArrayList<Entry> capitalCityByRegionTopN = reports.getCapitalCitiesByPopulation(null,"Eastern Europe",5);
         printEntries(capitalCityByRegionTopN);
 
-        /*
+
         // Population of the world:
         System.out.println("World population: " + reports.getPopulation(null, null, null, null, null));
 
@@ -176,10 +176,10 @@ public class App
         // Population of a city:
         System.out.println("City(Oxford) population: " + reports.getPopulation(null, null, null, null, "Oxford"));
 
-         */
-//        reports.runContinentPopulationReport();
-//        reports.runCountryPopulationReport();
-//        reports.runRegionPopulationReport();
+
+        reports.runContinentPopulationReport();
+        reports.runCountryPopulationReport();
+        reports.runRegionPopulationReport();
 
         // LANGUAGE REPORT
         System.out.println("LANGUAGE REPORT:");
@@ -193,15 +193,18 @@ public class App
      */
     public static void printEntries(ArrayList<Entry>listOfEntries){
         // Check if not null:
-        if (listOfEntries == null || listOfEntries.size()==0)
+        if (listOfEntries == null || listOfEntries.isEmpty())
         {
             System.out.println("No results to print.");
             return;
         }
         // Print header:
         if(listOfEntries.get(0) instanceof City){
-
-            System.out.println(String.format("%-40s %-5s %-25s %-15s", "Name", "Code", "District", "Population"));
+            if (((City) listOfEntries.get(0)).getDistrict()==null){
+                System.out.println(String.format("%-40s %-50s %-15s", "Name", "Country", "Population"));
+            } else {
+                System.out.println(String.format("%-40s %-50s %-25s %-15s", "Name", "Country", "District", "Population"));
+            }
         }
         else if(listOfEntries.get(0) instanceof Country){
             System.out.println(String.format("%-5s %-50s %-30s %-30s %-15s %-30s", "Code", "Name", "Continent", "Region", "Population", "Capital Name"));

@@ -1,8 +1,9 @@
 package com.napier.sem;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Unit tests for City class
@@ -39,21 +40,9 @@ public class CityTest {
                 '}';
 
         String actualToString=city.toString();
-
-        Assertions.assertEquals(expectedToString, actualToString);
+        assertEquals(expectedToString, actualToString);
 
     }
 
-    /**
-     * Test format method formats as expected
-     */
-    @Test
-    void testCityToReportFormat(){
 
-        String expectedToString =  String.format("%-40s %-5s %-25s %-15s", "Edinburgh", "GB", "Scotland", "300000");
-
-        String actualToString=city.toReportFormat();
-
-        Assertions.assertEquals(expectedToString, actualToString);
-    }
 }

@@ -1,8 +1,9 @@
 package com.napier.sem;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Unit tests for Language class
@@ -39,7 +40,7 @@ public class LanguageTest {
 
         String actualToString=language.toString();
 
-        Assertions.assertEquals(expectedToString, actualToString);
+        assertEquals(expectedToString, actualToString);
 
     }
 }

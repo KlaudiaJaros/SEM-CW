@@ -1,8 +1,9 @@
 package com.napier.sem;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Unit tests for Country class
@@ -44,21 +45,8 @@ public class CountryTest {
 
         String actualToString=country.toString();
 
-        Assertions.assertEquals(expectedToString, actualToString);
+        assertEquals(expectedToString, actualToString);
 
     }
 
-    /**
-     * Test format method formats as expected
-     */
-    @Test
-    void testCountryToReportFormat(){
-
-        String expectedToString =  String.format("%-5s %-50s %-30s %-30s %-15s %-30s",
-                "GBR", "United Kingdom", "Europe","British Islands" , 59623400, "London");
-
-        String actualToString=country.toReportFormat();
-
-        Assertions.assertEquals(expectedToString, actualToString);
-    }
 }

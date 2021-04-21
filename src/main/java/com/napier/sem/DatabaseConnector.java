@@ -1,7 +1,6 @@
 package com.napier.sem;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -13,7 +12,7 @@ public class DatabaseConnector {
     private static Connection connection = null;
 
     // to store the only instance of this class:
-    private static DatabaseConnector databaseConnector;
+    private static DatabaseConnector databaseConnector = new DatabaseConnector();
 
     // to store all data retrieved from the database:
     public static HashMap<String, Country> countries;
@@ -31,11 +30,6 @@ public class DatabaseConnector {
      * @return DatabaseConnector instance
      */
     public static DatabaseConnector getDatabaseConnector(){
-        // if the class hasn't been instantiated before:
-        if (databaseConnector==null){
-            databaseConnector=new DatabaseConnector();
-        }
-        // otherwise, return the existing instance:
         return databaseConnector;
     }
 

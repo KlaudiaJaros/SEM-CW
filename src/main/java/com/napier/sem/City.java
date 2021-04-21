@@ -106,16 +106,28 @@ public class City implements Entry {
     }
 
     /**
+     *
      * formats a string report to print a table row
      * @return formatted city string
      */
+    @Override
     public String toReportFormat(){
         String formattedCityString;
-        if (district == null){
-            formattedCityString = String.format("%-40s %-5s %-15s", name, countryCode, population);
-        } else {
-            formattedCityString = String.format("%-40s %-5s %-25s %-15s", name, countryCode, district, population);
+        String countryName;
+        try {
+            countryName = DatabaseConnector.countries.get(countryCode).getName();
         }
+        catch (Exception capitalCityNullException)
+        {
+            countryName = "N/A";
+        }
+
+        if (district == null){
+            formattedCityString = String.format("%-40s %-50s %-15s", name, countryName, population);
+        } else {
+            formattedCityString = String.format("%-40s %-50s %-25s %-15s", name, countryName, district, population);
+        }
+
         return formattedCityString;
     }
 }

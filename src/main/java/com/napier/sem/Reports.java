@@ -22,14 +22,13 @@ public class Reports {
 
     public ArrayList<Entry> getCountriesByPopulation(String continent, String region, int n) {
         try {
-            // to store and return results:
-            ArrayList<Entry> results = new ArrayList<>();
+
 
             // create a statement and a SQL query string:
             Statement statement = DatabaseConnector.getConnection().createStatement();
 
             // to store the where clause if continent or region string not null:
-            String whereClause= "";
+            String whereClause;
 
             //to store the limit clause if n is provided:
             String limitClause = "";
@@ -64,6 +63,9 @@ public class Reports {
             // execute SQL statement:
             ResultSet result = statement.executeQuery(query);
 
+            // to store and return results:
+            ArrayList<Entry> results = new ArrayList<>();
+
             // while the result has another line:
             while (result.next()) {
                 String code = result.getString("Code");
@@ -95,7 +97,7 @@ public class Reports {
             Statement statement = DatabaseConnector.getConnection().createStatement();
 
             // to store where clause to filter results if required
-            String whereClause = "";
+            String whereClause;
 
             // to store limit clause if N is provided by user
             String limitClause = "";
@@ -176,7 +178,7 @@ public class Reports {
             Statement statement = DatabaseConnector.getConnection().createStatement();
 
             // to store where clause to filter results if required
-            String whereClause = "";
+            String whereClause;
 
             // to store limit clause if N is provided by user
             String limitClause = "";
@@ -247,27 +249,24 @@ public class Reports {
             Statement statement = DatabaseConnector.getConnection().createStatement();
 
             // to store the select and where clause depending on the parameters:
-            String selectClause=""; // to distinguish between adding country populations or city
-            String whereClause= ""; // based on parameters
+            String selectClause="SELECT SUM(Population) AS population FROM country "; // to distinguish between adding country populations or city
+            String whereClause; // based on parameters
 
             // world population if all parameters are null:
             if (continent==null && country==null && region==null && district==null && city==null){
-                selectClause="SELECT SUM(Population) AS population FROM country ";
+
                 whereClause="";
             }
             // continent population:
             else if (continent!=null && country==null && region==null && district==null && city==null){
-                selectClause="SELECT SUM(Population) AS population FROM country ";
                 whereClause="WHERE continent='" + continent + "' ";
             }
             // country population:
             else if(continent==null && country!=null && region==null && district==null && city==null){
-                selectClause="SELECT SUM(Population) AS population FROM country ";
                 whereClause="WHERE name='" + country + "' ";
             }
             // region population:
             else if(continent==null && country==null && region!=null && district==null && city==null){
-                selectClause="SELECT SUM(Population) AS population FROM country ";
                 whereClause="WHERE region='" + region + "' ";
             }
 
@@ -445,6 +444,10 @@ public class Reports {
         }
     }
 
+    /**
+     * method that returns a report that contains the number of people that speak certain languages, in order from largest to smallest including percentage of the world population
+     * @return report in the right format
+     */
     public String getLanguageReport() {
         // initialise the number of people who speak these languages
         double chineseSpeakers = 0;
@@ -461,7 +464,7 @@ public class Reports {
                 // get this country's total population
                 double countryPopulation = DatabaseConnector.countries.get(item.getCountryCode()).getPopulation();
                 // get this country's language speaker population
-                double population =  ((item.getPercentage() * countryPopulation) / 100);
+                double population =  (item.getPercentage() * countryPopulation) / 100;
 
                 switch (item.getName()) {
                     case "Chinese":
@@ -481,6 +484,7 @@ public class Reports {
                         break;
                     default:
                         System.out.println("Error: this shouldn't happen");
+                        break;
                 }
             }
         }

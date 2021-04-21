@@ -155,6 +155,7 @@ public class Country implements Entry{
      * Formats a String with country data to print as a row in a table
      * @return formatted country String
      */
+    @Override
     public String toReportFormat() {
         String capitalName;
         try {
