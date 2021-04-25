@@ -46,7 +46,7 @@ Patrycja (Scrum Master)
 | 24 | The population of people, people living in cities, and people not living in cities in each region. | Yes | [24](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshots/population-reg.png) |
 | 25 | The population of people, people living in cities, and people not living in cities in each country. | Yes | [25](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshots/population-country.png) |
 | 26 | Population of the world. | Yes | [26](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshots/world.png) |
-| 27 | Population of a continent. | Yes | [27](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshotshttps://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshots/continent.png) |
+| 27 | Population of a continent. | Yes | [27](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshots/continent.png) |
 | 28 | Population of a country. | Yes | [28](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshots/country.png) |
 | 29 | Population of a district. | Yes | [29](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshots/district.png) |
 | 30 | Population of a city. | Yes | [30](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshots/city.png) |
