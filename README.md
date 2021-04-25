@@ -25,7 +25,7 @@ Patrycja (Scrum Master)
 | 3 | All the countries in a region organised by largest population to smallest. | Yes |  [3](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshots/allcountries-reg.png)  |
 | 4 | The top N populated countries in the world where N is provided by the user. | Yes |  [4](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshots/topncountries.png)  |
 | 5 | The top N populated countries in a continent where N is provided by the user. | Yes |  [5](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshots/topncountries-cont.png) |
-| 6 | The top N populated countries in a region where N is provided by the user. | Yes | [6](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshotss/topncountries-reg.png)  |
+| 6 | The top N populated countries in a region where N is provided by the user. | Yes | [6](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshots/topncountries-reg.png)  |
 | 7 | All the cities in the world organised by largest population to smallest. | Yes | [7](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshots/allcities.png)  | 
 | 8 | All the cities in a continent organised by largest population to smallest. | Yes |  [8](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshots/allcities-cont.png) |
 | 9 | All the cities in a region organised by largest population to smallest. | Yes |  [9](https://github.com/KlaudiaJaros/SEM-CW/blob/develop/report%20screenshots/allcities-reg.png)  |
