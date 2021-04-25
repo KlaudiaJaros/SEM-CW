@@ -43,6 +43,14 @@ public class App
         // initialise reports class:
         Reports reports = new Reports();
 
+        // variables that will be provided by the user if needed:
+        String continent;
+        String region;
+        String district;
+        String country;
+        String city;
+        int n;
+
         // COUNTRY REPORTS:
 
         // List all the countries in the world largest population to smallest:
@@ -53,31 +61,43 @@ public class App
         // List all the countries in a continent largest population to smallest:
         // E.g.: user provided "Africa" as the continent
         System.out.println("All countries in a continent largest population to smallest:");
-        ArrayList<Entry> byContinent = reports.getCountriesByPopulation("Africa", null, 0);
+        continent = "Africa";
+        System.out.println("User provided "+ continent + " as the continent:");
+        ArrayList<Entry> byContinent = reports.getCountriesByPopulation(continent, null, 0);
         printEntries(byContinent);
 
         // List all the countries in a region largest population to smallest:
         // E.g.: user provided "Eastern Europe" as the region
         System.out.println("All countries in a region largest population to smallest:");
-        ArrayList<Entry> byRegion = reports.getCountriesByPopulation(null, "Eastern Europe", 0);
+        region = "Eastern Europe";
+        System.out.println("User provided "+ region + " as the region:");
+        ArrayList<Entry> byRegion = reports.getCountriesByPopulation(null, region, 0);
         printEntries(byRegion);
 
         // List the top N populated countries in the world:
         // E.g.: user provided 5 as the N
         System.out.println("List the top N populated countries in the world:");
-        ArrayList<Entry> byNumber = reports.getCountriesByPopulation(null, null, 5);
+        n = 5;
+        System.out.println("User provided "+ n + " as the N:");
+        ArrayList<Entry> byNumber = reports.getCountriesByPopulation(null, null, n);
         printEntries(byNumber);
 
         // List the top N countries in a continent largest population to smallest:
         // E.g.: user provided "Africa" as the continent and 10 as the N
-        System.out.println(" List the top N countries in a continent largest population to smallest:");
-        ArrayList<Entry> byContinentTopN = reports.getCountriesByPopulation("Africa", null, 10);
+        System.out.println("List the top N countries in a continent largest population to smallest:");
+        continent = "Africa";
+        n = 10;
+        System.out.println("User provided "+ continent +" as the continent and " + n + " as the N:");
+        ArrayList<Entry> byContinentTopN = reports.getCountriesByPopulation(continent, null, n);
         printEntries(byContinentTopN);
 
         // List the top N countries in a region largest population to smallest:
         // E.g.: user provided "Eastern Europe" as the region and 5 as the N
         System.out.println("List the top N countries in a region largest population to smallest:");
-        ArrayList<Entry> byRegionTopN = reports.getCountriesByPopulation(null, "Eastern Europe", 5);
+        region = "Eastern Europe";
+        n = 5;
+        System.out.println("User provided "+ region +" as the region and " + n + " as the N:");
+        ArrayList<Entry> byRegionTopN = reports.getCountriesByPopulation(null, region, n);
         printEntries(byRegionTopN);
 
         // CITY REPORTS:
@@ -90,55 +110,77 @@ public class App
         // List of all the cities in a continent organised by largest population to smallest:
         // E.g.: user provided "Asia" as the continent
         System.out.println("List of all the cities in a continent organised by largest population to smallest: ");
-        ArrayList<Entry> cityByContinent = reports.getCitiesByPopulation("Asia", null, null, null,0);
+        continent = "Asia";
+        System.out.println("User provided "+ continent +" as the continent:");
+        ArrayList<Entry> cityByContinent = reports.getCitiesByPopulation(continent, null, null, null,0);
         printEntries(cityByContinent);
 
         // List of all the cities in a region organised by largest population to smallest:
         // E.g.: user provided "Eastern Europe" as the region
         System.out.println("List of all the cities in a region organised by largest population to smallest:");
-        ArrayList<Entry> cityByRegion = reports.getCitiesByPopulation(null, "Eastern Europe", null, null,0);
+        region = "Eastern Europe";
+        System.out.println("User provided "+ region +" as the region:");
+        ArrayList<Entry> cityByRegion = reports.getCitiesByPopulation(null, region, null, null,0);
         printEntries(cityByRegion);
 
         // List of all the cities in a country organised by largest population to smallest:
         // E.g.: user provided "Austria" as the country
         System.out.println("List of all the cities in a country organised by largest population to smallest:");
-        ArrayList<Entry> cityByCountry = reports.getCitiesByPopulation(null,null,null,"Austria",0);
+        country = "Austria";
+        System.out.println("User provided "+ country +" as the country:");
+        ArrayList<Entry> cityByCountry = reports.getCitiesByPopulation(null,null,null,country,0);
         printEntries(cityByCountry);
 
         // List of all the cities in a district organised by largest population to smallest:
         // E.g.: user provided "Dubai" as the district
         System.out.println("List of all the cities in a district organised by largest population to smallest:");
-        ArrayList<Entry> cityByDistrict = reports.getCitiesByPopulation(null,null,"Dubai",null,0);
+        district = "Dubai";
+        System.out.println("User provided "+ district +" as the district:");
+        ArrayList<Entry> cityByDistrict = reports.getCitiesByPopulation(null,null,district,null,0);
         printEntries(cityByDistrict);
 
         // List the top N cities in the world organised by largest population to smallest:
         // E.g.: user provided 10 as the N
         System.out.println("List the top N cities in the world organised by largest population to smallest:");
-        ArrayList<Entry> cityResultTopN = reports.getCitiesByPopulation(null, null, null, null,10);
+        n = 10;
+        System.out.println("User provided "+ n +" as the N:");
+        ArrayList<Entry> cityResultTopN = reports.getCitiesByPopulation(null, null, null, null,n);
         printEntries(cityResultTopN);
 
         // List the top N cities in a continent organised by largest population to smallest:
         // E.g.: user provided "Asia" as the continent and 5 as the N
         System.out.println("List the top N cities in a continent organised by largest population to smallest: ");
-        ArrayList<Entry> cityByContinentTopN = reports.getCitiesByPopulation("Asia", null, null, null,5);
+        continent = "Asia";
+        n = 5;
+        System.out.println("User provided "+ continent +" as the continent and " + n + " as the N:");
+        ArrayList<Entry> cityByContinentTopN = reports.getCitiesByPopulation(continent, null, null, null,n);
         printEntries(cityByContinentTopN);
 
         // List the top N cities in a region organised by largest population to smallest:
         // E.g.: user provided "Eastern Europe" as the region and 5 as the N
         System.out.println("List the top N cities in a region organised by largest population to smallest:");
-        ArrayList<Entry> cityByRegionTopN = reports.getCitiesByPopulation(null, "Eastern Europe", null, null,5);
+        region = "Eastern Europe";
+        n = 5;
+        System.out.println("User provided "+ region +" as the region and " + n + " as the N:");
+        ArrayList<Entry> cityByRegionTopN = reports.getCitiesByPopulation(null, region, null, null,n);
         printEntries(cityByRegionTopN);
 
         // List the top N cities in a country organised by largest population to smallest:
         // E.g.: user provided "Austria" as the country and 5 as the N
         System.out.println("List the top N cities in a country organised by largest population to smallest:");
-        ArrayList<Entry> cityByCountryTopN = reports.getCitiesByPopulation(null,null,null,"Austria",5);
+        country = "Austria";
+        n = 5;
+        System.out.println("User provided "+ country +" as the country and " + n + " as the N:");
+        ArrayList<Entry> cityByCountryTopN = reports.getCitiesByPopulation(null,null,null,country,n);
         printEntries(cityByCountryTopN);
 
         // List the top N cities in a district organised by largest population to smallest:
         // E.g.: user provided "Kansas" as the district and 2 as the N
         System.out.println("List the top N cities in a district organised by largest population to smallest:");
-        ArrayList<Entry> cityByDistrictTopN = reports.getCitiesByPopulation(null,null,"Kansas",null,2);
+        district = "Kansas";
+        n = 2;
+        System.out.println("User provided "+ district +" as the district and " + n + " as the N:");
+        ArrayList<Entry> cityByDistrictTopN = reports.getCitiesByPopulation(null,null,district,null,n);
         printEntries(cityByDistrictTopN);
 
         // List of all the capital cities in the world organised by largest population to smallest:
@@ -149,31 +191,43 @@ public class App
         // List of all the capital cities in a continent organised by largest population to smallest:
         // E.g.: user provided "Europe" as the continent
         System.out.println("List of all the capital cities in a continent organised by largest population to smallest:");
-        ArrayList<Entry> capitalCityByContinent = reports.getCapitalCitiesByPopulation("Europe",null,0);
+        continent = "Europe";
+        System.out.println("User provided "+ continent +" as the continent:");
+        ArrayList<Entry> capitalCityByContinent = reports.getCapitalCitiesByPopulation(continent,null,0);
         printEntries(capitalCityByContinent);
 
         // List of all the capital cities in a region organised by largest population to smallest:
         // E.g.: user provided "Eastern Europe" as the region
         System.out.println("List of all the capital cities in a region organised by largest population to smallest:");
-        ArrayList<Entry> capitalCityByRegion = reports.getCapitalCitiesByPopulation(null,"Eastern Europe",0);
+        region = "Eastern Europe";
+        System.out.println("User provided "+ region +" as the region:");
+        ArrayList<Entry> capitalCityByRegion = reports.getCapitalCitiesByPopulation(null,region,0);
         printEntries(capitalCityByRegion);
 
         // List of top N the capital cities in the world organised by largest population to smallest:
         // E.g.: user provided 5 as the N
         System.out.println("List of top N the capital cities in the world organised by largest population to smallest:");
-        ArrayList<Entry> capitalCityResultTopN = reports.getCapitalCitiesByPopulation(null,null,5);
+        n = 5;
+        System.out.println("User provided "+ n +" as the N:");
+        ArrayList<Entry> capitalCityResultTopN = reports.getCapitalCitiesByPopulation(null,null,n);
         printEntries(capitalCityResultTopN);
 
         // List of top N the capital cities in a continent organised by largest population to smallest:
         // E.g.: user provided "Europe" as the continent and 5 as the N
         System.out.println("List of top N the capital cities in a continent organised by largest population to smallest:");
-        ArrayList<Entry> capitalCityByContinentTopN = reports.getCapitalCitiesByPopulation("Europe",null,5);
+        continent = "Europe";
+        n = 5;
+        System.out.println("User provided "+ continent +" as the continent and " + n + " as the N:");
+        ArrayList<Entry> capitalCityByContinentTopN = reports.getCapitalCitiesByPopulation(continent,null,n);
         printEntries(capitalCityByContinentTopN);
 
         // List of top N the capital cities in a region organised by largest population to smallest:
         // E.g.: user provided "Eastern Europe" as the region and 5 as the N
         System.out.println("List of top N the capital cities in a region organised by largest population to smallest:");
-        ArrayList<Entry> capitalCityByRegionTopN = reports.getCapitalCitiesByPopulation(null,"Eastern Europe",5);
+        region = "Eastern Europe";
+        n = 5;
+        System.out.println("User provided "+ region +" as the region and " + n + " as the N:");
+        ArrayList<Entry> capitalCityByRegionTopN = reports.getCapitalCitiesByPopulation(null,region,n);
         printEntries(capitalCityByRegionTopN);
 
 
@@ -182,23 +236,28 @@ public class App
 
         // Population of a continent:
         // E.g.: user provided "Asia" as the continent
-        System.out.println("Continent(Asia) population: " + reports.getPopulation("Asia", null, null, null, null));
+        continent = "Asia";
+        System.out.println("Continent("+ continent + ") population: " + reports.getPopulation(continent, null, null, null, null));
 
         // Population of a country:
         // E.g.: user provided "Egypt" as the country
-        System.out.println("Country(Egypt) population: " + reports.getPopulation(null, "Egypt", null, null, null));
+        country = "Egypt";
+        System.out.println("Country(" + country + ") population: " + reports.getPopulation(null, country, null, null, null));
 
         // Population of a region:
         // E.g.: user provided "Western Europe" as the region
-        System.out.println("Region(Western Europe) population: " + reports.getPopulation(null, null, "Western Europe", null, null));
+        region = "Western Europe";
+        System.out.println("Region(" + region + ") population: " + reports.getPopulation(null, null, region, null, null));
 
         // Population of a district:
         // E.g.: user provided "Buenos Aires" as the district
-        System.out.println("District(Buenos Aires) population: " + reports.getPopulation(null, null, null, "Buenos Aires", null));
+        district = "Buenos Aires";
+        System.out.println("District(" + district + ") population: " + reports.getPopulation(null, null, null, district, null));
 
         // Population of a city:
         // E.g.: user provided "Oxford" as the city
-        System.out.println("City(Oxford) population: " + reports.getPopulation(null, null, null, null, "Oxford"));
+        city = "Oxford";
+        System.out.println("City(" + city + ") population: " + reports.getPopulation(null, null, null, null, city));
 
         // The population of people, people living in cities, and people not living in cities in each continent report:
         reports.runContinentPopulationReport();
@@ -208,7 +267,7 @@ public class App
         reports.runRegionPopulationReport();
 
         // Language report
-        System.out.println("Language report:");
+        System.out.println("Number of people who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest:");
         System.out.println(reports.getLanguageReport());
 
     }
