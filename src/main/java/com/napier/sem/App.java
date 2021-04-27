@@ -75,7 +75,7 @@ public class App
         printEntries(byRegion);
 
         // List the top N populated countries in the world:
-        // E.g.: user provided 5 as the N
+        // E.g.: user provided 5 as N (number)
         System.out.println("List the top N populated countries in the world:");
         n = 5;
         System.out.println("User provided "+ n + " as the N:");
@@ -83,7 +83,7 @@ public class App
         printEntries(byNumber);
 
         // List the top N countries in a continent largest population to smallest:
-        // E.g.: user provided "Africa" as the continent and 10 as the N
+        // E.g.: user provided "Africa" as the continent and 10 as N (number)
         System.out.println("List the top N countries in a continent largest population to smallest:");
         continent = "Africa";
         n = 10;
@@ -92,7 +92,7 @@ public class App
         printEntries(byContinentTopN);
 
         // List the top N countries in a region largest population to smallest:
-        // E.g.: user provided "Eastern Europe" as the region and 5 as the N
+        // E.g.: user provided "Eastern Europe" as the region and 5 as N (number)
         System.out.println("List the top N countries in a region largest population to smallest:");
         region = "Eastern Europe";
         n = 5;
@@ -140,7 +140,7 @@ public class App
         printEntries(cityByDistrict);
 
         // List the top N cities in the world organised by largest population to smallest:
-        // E.g.: user provided 10 as the N
+        // E.g.: user provided 10 as N (number)
         System.out.println("List the top N cities in the world organised by largest population to smallest:");
         n = 10;
         System.out.println("User provided "+ n +" as the N:");
@@ -148,7 +148,7 @@ public class App
         printEntries(cityResultTopN);
 
         // List the top N cities in a continent organised by largest population to smallest:
-        // E.g.: user provided "Asia" as the continent and 5 as the N
+        // E.g.: user provided "Asia" as the continent and 5 as N (number)
         System.out.println("List the top N cities in a continent organised by largest population to smallest: ");
         continent = "Asia";
         n = 5;
@@ -157,7 +157,7 @@ public class App
         printEntries(cityByContinentTopN);
 
         // List the top N cities in a region organised by largest population to smallest:
-        // E.g.: user provided "Eastern Europe" as the region and 5 as the N
+        // E.g.: user provided "Eastern Europe" as the region and 5 as N (number)
         System.out.println("List the top N cities in a region organised by largest population to smallest:");
         region = "Eastern Europe";
         n = 5;
@@ -166,7 +166,7 @@ public class App
         printEntries(cityByRegionTopN);
 
         // List the top N cities in a country organised by largest population to smallest:
-        // E.g.: user provided "Austria" as the country and 5 as the N
+        // E.g.: user provided "Austria" as the country and 5 as N (number)
         System.out.println("List the top N cities in a country organised by largest population to smallest:");
         country = "Austria";
         n = 5;
@@ -175,7 +175,7 @@ public class App
         printEntries(cityByCountryTopN);
 
         // List the top N cities in a district organised by largest population to smallest:
-        // E.g.: user provided "Kansas" as the district and 2 as the N
+        // E.g.: user provided "Kansas" as the district and 2 as N (number)
         System.out.println("List the top N cities in a district organised by largest population to smallest:");
         district = "Kansas";
         n = 2;
@@ -205,7 +205,7 @@ public class App
         printEntries(capitalCityByRegion);
 
         // List of top N the capital cities in the world organised by largest population to smallest:
-        // E.g.: user provided 5 as the N
+        // E.g.: user provided 5 as N (number)
         System.out.println("List of top N the capital cities in the world organised by largest population to smallest:");
         n = 5;
         System.out.println("User provided "+ n +" as the N:");
@@ -213,7 +213,7 @@ public class App
         printEntries(capitalCityResultTopN);
 
         // List of top N the capital cities in a continent organised by largest population to smallest:
-        // E.g.: user provided "Europe" as the continent and 5 as the N
+        // E.g.: user provided "Europe" as the continent and 5 as N (number)
         System.out.println("List of top N the capital cities in a continent organised by largest population to smallest:");
         continent = "Europe";
         n = 5;
@@ -222,7 +222,7 @@ public class App
         printEntries(capitalCityByContinentTopN);
 
         // List of top N the capital cities in a region organised by largest population to smallest:
-        // E.g.: user provided "Eastern Europe" as the region and 5 as the N
+        // E.g.: user provided "Eastern Europe" as the region and 5 as N (number)
         System.out.println("List of top N the capital cities in a region organised by largest population to smallest:");
         region = "Eastern Europe";
         n = 5;
