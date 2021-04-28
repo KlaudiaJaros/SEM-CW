@@ -341,8 +341,6 @@ public class Reports {
                         continent, population, cityPopulation, cityPercentage, outsidePopulation, outsidePercentage);
                 System.out.println(row);
             }
-            System.out.println(String.format("%-20s %-20s %-20s %-15s %-20s %-20s",
-                    "Antarctica", "0", "0", "N/A", "0", "N/A"));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -372,7 +370,7 @@ public class Reports {
             ResultSet result = statement.executeQuery(query);
 
             // print a header:
-            String header = String.format("%-30s %-20s %-20s %-15s %-20s %-20s",
+            String header = String.format("%-50s %-20s %-20s %-15s %-20s %-20s",
                     "Country", "Population", "City Population", "City %", "Outside of City", "Outside of city %");
             System.out.println("Report of the population of people, people living in cities, and people not living in cities in each country:");
             System.out.println(header);
@@ -385,7 +383,7 @@ public class Reports {
                 String outsidePopulation = String.valueOf(result.getLong("Outside of City Population"));
                 String outsidePercentage = result.getString("Outside of city %");
 
-                String row = String.format("%-30s %-20s %-20s %-15s %-20s %-20s",
+                String row = String.format("%-50s %-20s %-20s %-15s %-20s %-20s",
                         country, population, cityPopulation, cityPercentage, outsidePopulation, outsidePercentage);
                 System.out.println(row);
             }
@@ -524,7 +522,7 @@ public class Reports {
         {
             double percentage = (languagesPopulations.get(i) * 100) / worldPopulation;
             String formattedLanguageReportString = String.format("%-20s %-25s %-20s",
-                    languages[i], Math.round(languagesPopulations.get(i)), percentage);
+                    languages[i], Math.round(languagesPopulations.get(i)), Math.round(percentage*100.0)/100.0 + "%");
             report=report.concat(formattedLanguageReportString);
             report=report.concat("\n");
         }
